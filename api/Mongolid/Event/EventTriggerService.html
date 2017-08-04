@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,27 +66,43 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../../Mongolid/Event.html">Event</a></li>
-    
-                <li>EventTriggerService</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Event.html">Event</a></li><li class="backslash">\</li><li>EventTriggerService</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>EventTriggerService</h1>
+        <h1>
+            EventTriggerService
+                
+        </h1>
     </div>
 
     <p>    class
     <strong>EventTriggerService</strong>
 </p>
 
+        
+    
+
             <div class="description">
-            <p>Provides the service of event firing.</p>                    </div>
+            <p>Provides the service of event firing.</p>                                </div>
     
     
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_dispatcher">
+                                        protected                                        <a href="../../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a>
+                </td>
+                <td>$dispatcher</td>
+                <td class="last">The one who are going to actually trigger the events to the rest of the application.</td>
+                <td></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
@@ -91,26 +110,22 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_registerEventDispatcher">registerEventDispatcher</a>(
-    <a href="../../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a> $dispatcher)
-                                            <p>Registers a object that will have the responsability of firing events to
+                    <a href="#method_registerEventDispatcher">registerEventDispatcher</a>(<a href="../../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a> $dispatcher)
+        
+                                            <p>Registers a object that will have the responsibility of firing events to
 the rest of the application.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    mixed
+                    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fire">fire</a>(
-    <abbr title="Mongolid\Event\string">string</abbr> $event, 
-    mixed $payload, 
-    <abbr title="Mongolid\Event\bool">bool</abbr> $halt = false)
-                                            <p>Triggers / Dispatchs a new event to the registered event handlers if
+                    <a href="#method_fire">fire</a>(string $event, mixed $payload, bool $halt = false)
+        
+                                            <p>Triggers / Dispatches a new event to the registered event handlers if
 they have been registered.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -122,39 +137,30 @@ they have been registered.</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_registerEventDispatcher">
-        <div class="location">at line         line 26</div>
+        <div class="location">at         line 23</div>
         <code>                    
-    void
-    <strong>registerEventDispatcher</strong>(
-    <a href="../../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a> $dispatcher)</code>
+    <strong>registerEventDispatcher</strong>(<a href="../../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a> $dispatcher)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Registers a object that will have the responsability of firing events to
-the rest of the application.</p>                                </div>
+                                    <p>Registers a object that will have the responsibility of firing events to
+the rest of the application.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <a href="../../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a></td>
+                <td><a href="../../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a></td>
                 <td>$dispatcher</td>
-                <td>Event trigger object.</td>
+                <td>event trigger object</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -163,41 +169,38 @@ the rest of the application.</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_fire">
-        <div class="location">at line         line 43</div>
-        <code>                    
-    mixed
-    <strong>fire</strong>(
-    <abbr title="Mongolid\Event\string">string</abbr> $event, 
-    mixed $payload, 
-    <abbr title="Mongolid\Event\bool">bool</abbr> $halt = false)</code>
+        <div class="location">at         line 40</div>
+        <code>                    mixed
+    <strong>fire</strong>(string $event, mixed $payload, bool $halt = false)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Triggers / Dispatchs a new event to the registered event handlers if
-they have been registered.</p>                                </div>
+                                    <p>Triggers / Dispatches a new event to the registered event handlers if
+they have been registered.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="Mongolid\Event\string">string</abbr></td>
+                <td>string</td>
                 <td>$event</td>
-                <td>Identification of the event.</td>
+                <td>identification of the event</td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$payload</td>
-                <td>Data that is going to be sent to the event handler.</td>
+                <td>data that is going to be sent to the event handler</td>
             </tr>
                     <tr>
-                <td>
-    <abbr title="Mongolid\Event\bool">bool</abbr></td>
+                <td>bool</td>
                 <td>$halt</td>
-                <td>The output of the event handler will be used in a coditional inside the context of
-                         where the event is being fired. This means that, if the event handler returns false,
-                         it will probably stop the action being executed, for example, "saving".</td>
+                <td>The output of the event handler will be used in a conditional inside the context of
+                       where the event is being fired. This means that, if the event handler returns false,
+                       it will probably stop the action being executed, for example, "saving".</td>
             </tr>
             </table>
 
@@ -206,8 +209,7 @@ they have been registered.</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td>Event handler return. The importance of this return is determined by $halt</td>
         </tr>
     </table>

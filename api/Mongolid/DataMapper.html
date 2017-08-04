@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,9 +66,7 @@
                 <div class="namespace-breadcrumbs">
         <ol class="breadcrumb">
             <li><span class="label label-default">Namespace</span></li>
-                                                        <li><a href="../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../Mongolid/DataMapper.html">DataMapper</a></li>
-    
+                    <li><a href="../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../Mongolid/DataMapper.html">DataMapper</a></li><li class="backslash">\</li>
         </ol>
     </div>
             <div id="page-content">
@@ -80,8 +81,19 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
+                                            <a href="../Mongolid/DataMapper/BulkWrite.html"><abbr title="Mongolid\DataMapper\BulkWrite">BulkWrite</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    This class is meant to provide a better API for handling
+with bulk operations.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <a href="../Mongolid/DataMapper/DataMapper.html"><abbr title="Mongolid\DataMapper\DataMapper">DataMapper</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     The DataMapper class will abstract how an Entity is persisted and retrieved
 from the database.
@@ -90,21 +102,23 @@ from the database.
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../Mongolid/DataMapper/EntityAssembler.html"><abbr title="Mongolid\DataMapper\EntityAssembler">EntityAssembler</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
-                    EntityAssembler have the responsability of assembling the data coming from
+                    EntityAssembler have the responsibility of assembling the data coming from
 the database into actual entities. Since the entities need to be assembled
 whenever they are being built with data from the database, from a cursor or
-from an embeded field, this service is a reusable tool to turn field array of
+from an embedded field, this service is a reusable tool to turn field array of
 attributes into the actual Entity.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../Mongolid/DataMapper/SchemaMapper.html"><abbr title="Mongolid\DataMapper\SchemaMapper">SchemaMapper</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
-                    The SchemaMapper will map an object or an array of data to an Schema object.
+                    The SchemaMapper will map an object or an array of data to a Schema object.
                 </div>
             </div>
             </div>

@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,28 +66,44 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../../Mongolid/Container.html">Container</a></li>
-    
-                <li>Ioc</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Container.html">Container</a></li><li class="backslash">\</li><li>Ioc</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>Ioc</h1>
+        <h1>
+            Ioc
+                
+        </h1>
     </div>
 
     <p>    class
     <strong>Ioc</strong>
 </p>
 
+        
+    
+
             <div class="description">
             <p>This class is a simple Facade for a Illuminate\Container\Container
-in order to use the Container as IOC at all classes.</p>                    </div>
+in order to use the Container as IOC at all classes.</p>                                </div>
     
     
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_container">
+                    static                    protected                                        <abbr title="Illuminate\Contracts\Container\Container">Container</abbr>
+                </td>
+                <td>$container</td>
+                <td class="last">Illuminate instance.</td>
+                <td></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
@@ -92,23 +111,20 @@ in order to use the Container as IOC at all classes.</p>                    </di
                     <div class="row">
                 <div class="col-md-2 type">
                     static&nbsp;
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setContainer">setContainer</a>(
-    <abbr title="Illuminate\Contracts\Container\Container">Container</abbr> $container)
+                    <a href="#method_setContainer">setContainer</a>(<abbr title="Illuminate\Contracts\Container\Container">Container</abbr> $container)
+        
                                             <p>Setter for static::$container.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;
-    mixed
+                    static&nbsp;mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___callStatic">__callStatic</a>(
-    <abbr title="Mongolid\Container\string">string</abbr> $method, 
-    array $args)
+                    <a href="#method___callStatic">__callStatic</a>(string $method, array $args)
+        
                                             <p>Handle dynamic, static calls to the object.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -120,38 +136,29 @@ in order to use the Container as IOC at all classes.</p>                    </di
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_setContainer">
-        <div class="location">at line         line 26</div>
+        <div class="location">at         line 25</div>
         <code>        static            
-    void
-    <strong>setContainer</strong>(
-    <abbr title="Illuminate\Contracts\Container\Container">Container</abbr> $container)</code>
+    <strong>setContainer</strong>(<abbr title="Illuminate\Contracts\Container\Container">Container</abbr> $container)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Setter for static::$container.</p>                                </div>
+                                    <p>Setter for static::$container.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="Illuminate\Contracts\Container\Container">Container</abbr></td>
+                <td><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></td>
                 <td>$container</td>
-                <td>The IoC container that will be used by mongolid.</td>
+                <td>the IoC container that will be used by mongolid</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -160,31 +167,30 @@ in order to use the Container as IOC at all classes.</p>                    </di
             </div>
                     <div class="method-item">
                     <h3 id="method___callStatic">
-        <div class="location">at line         line 38</div>
-        <code>        static            
-    mixed
-    <strong>__callStatic</strong>(
-    <abbr title="Mongolid\Container\string">string</abbr> $method, 
-    array $args)</code>
+        <div class="location">at         line 38</div>
+        <code>        static            mixed
+    <strong>__callStatic</strong>(string $method, array $args)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Handle dynamic, static calls to the object.</p>                                </div>
+                                    <p>Handle dynamic, static calls to the object.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="Mongolid\Container\string">string</abbr></td>
+                <td>string</td>
                 <td>$method</td>
-                <td>Method that is being called.</td>
+                <td>method that is being called</td>
             </tr>
                     <tr>
-                <td>
-    array</td>
+                <td>array</td>
                 <td>$args</td>
-                <td>Method arguments.</td>
+                <td>method arguments</td>
             </tr>
             </table>
 
@@ -193,8 +199,7 @@ in order to use the Container as IOC at all classes.</p>                    </di
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>

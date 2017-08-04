@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,25 +66,29 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../Mongolid.html">Mongolid</a></li>
-    
-                <li>Manager</li>
+                        <li><a href="../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li>Manager</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>Manager</h1>
+        <h1>
+            Manager
+                
+        </h1>
     </div>
 
     <p>    class
     <strong>Manager</strong>
 </p>
 
+        
+    
+
             <div class="description">
             <p>Wraps the Mongolid initialization. The main purpose of the Manager is to make
 it easy to use without any framework.</p>            <p>With the Mongolid\Manager, you can start using Mongolid with pure PHP by
-simply calling the addConnection method.</p>        </div>
+simply calling the addConnection method.</p>                    </div>
     
     
     
@@ -89,21 +96,44 @@ simply calling the addConnection method.</p>        </div>
 
             <table class="table table-condensed">
                     <tr>
+                <td class="type" id="property_singleton">
+                    static                    protected                                        <a href="../Mongolid/Manager.html"><abbr title="Mongolid\Manager">Manager</abbr></a>
+                </td>
+                <td>$singleton</td>
+                <td class="last">Singleton instance of the manager.</td>
+                <td></td>
+            </tr>
+                    <tr>
                 <td class="type" id="property_container">
-                                                                                
-    <abbr title="Illuminate\Contracts\Container\Container">Container</abbr>
+                                                                                <abbr title="Illuminate\Contracts\Container">Container</abbr>
                 </td>
                 <td>$container</td>
-                <td class="last">Container being used by Mongolid</td>
+                <td class="last">Container being used by Mongolid.</td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_connectionPool">
-                                                                                
-    <a href="../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a>
+                                                                                <a href="../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a>
                 </td>
                 <td>$connectionPool</td>
-                <td class="last">Mongolid connection pool being object</td>
+                <td class="last">Mongolid connection pool being object.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheComponent">
+                                                                                <a href="../Mongolid/Util/CacheComponent.html"><abbr title="Mongolid\Util\CacheComponent">CacheComponent</abbr></a>
+                </td>
+                <td>$cacheComponent</td>
+                <td class="last">Mongolid cache component object.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_schemas">
+                                        protected                                        array
+                </td>
+                <td>$schemas</td>
+                <td class="last">Stores the schemas that have been registered for later use. This may be
+useful when using Mongolid DataMapper pattern.</td>
                 <td></td>
             </tr>
             </table>
@@ -114,12 +144,11 @@ simply calling the addConnection method.</p>        </div>
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    boolean
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_addConnection">addConnection</a>(
-    <a href="../Mongolid/Connection/Connection.html"><abbr title="Mongolid\Connection\Connection">Connection</abbr></a> $connection)
+                    <a href="#method_addConnection">addConnection</a>(<a href="../Mongolid/Connection/Connection.html"><abbr title="Mongolid\Connection\Connection">Connection</abbr></a> $connection)
+        
                                             <p>Main entry point to openning a connection and start using Mongolid in
 pure PHP. After adding a connection into the Manager you are ready to
 persist and query your models.</p>                </div>
@@ -127,47 +156,54 @@ persist and query your models.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="MongoDB\Client">Client</abbr>
+                    <abbr title="MongoDB\Client">Client</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getConnection">getConnection</a>()
-                                            <p>Get the raw MongoDB connection</p>                </div>
+        
+                                            <p>Get the raw MongoDB connection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setEventTrigger">setEventTrigger</a>(
-    <a href="../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a> $eventTrigger)
+                    <a href="#method_setEventTrigger">setEventTrigger</a>(<a href="../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a> $eventTrigger)
+        
                                             <p>Sets the event trigger for Mongolid events.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_registerSchema">registerSchema</a>(
-    <a href="../Mongolid/Schema.html"><abbr title="Mongolid\Schema">Schema</abbr></a> $schema)
-                                            <p>Allow document Schemas to be registered for later use</p>                </div>
+                    <a href="#method_registerSchema">registerSchema</a>(<a href="../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a> $schema)
+        
+                                            <p>Allow document Schemas to be registered for later use.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Mongolid/DataMapper/DataMapper.html"><abbr title="Mongolid\DataMapper\DataMapper">DataMapper</abbr></a>|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getMapper">getMapper</a>(string $entityClass)
+        
+                                            <p>Retrieves a DataMapper for the given $entityClass. This can only be done
+if the Schema for that entity has been previously registered with
+registerSchema() method.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <a href="../Mongolid/DataMapper/DataMapper.html"><abbr title="Mongolid\DataMapper\DataMapper">DataMapper</abbr></a>|null
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getMapper">getMapper</a>(
-    <abbr title="Mongolid\string">string</abbr> $entityClass)
-                                            <p>Retrieves a DataMapper for the given $entityClass. This can only be done
-if the Schema for that entity has been previously registered with
-registerSchema() method.</p>                </div>
+                    <a href="#method_init">init</a>()
+        
+                                            <p>Initializes the Mongolid manager.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -178,26 +214,27 @@ registerSchema() method.</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_addConnection">
-        <div class="location">at line         line 63</div>
-        <code>                    
-    boolean
-    <strong>addConnection</strong>(
-    <a href="../Mongolid/Connection/Connection.html"><abbr title="Mongolid\Connection\Connection">Connection</abbr></a> $connection)</code>
+        <div class="location">at         line 74</div>
+        <code>                    bool
+    <strong>addConnection</strong>(<a href="../Mongolid/Connection/Connection.html"><abbr title="Mongolid\Connection\Connection">Connection</abbr></a> $connection)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Main entry point to openning a connection and start using Mongolid in
 pure PHP. After adding a connection into the Manager you are ready to
-persist and query your models.</p>                                </div>
+persist and query your models.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <a href="../Mongolid/Connection/Connection.html"><abbr title="Mongolid\Connection\Connection">Connection</abbr></a></td>
+                <td><a href="../Mongolid/Connection/Connection.html"><abbr title="Mongolid\Connection\Connection">Connection</abbr></a></td>
                 <td>$connection</td>
-                <td>Connection instance to be used in database interactions.</td>
+                <td>connection instance to be used in database interactions</td>
             </tr>
             </table>
 
@@ -206,8 +243,7 @@ persist and query your models.</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    boolean</td>
+            <td>bool</td>
             <td>Success</td>
         </tr>
     </table>
@@ -220,22 +256,24 @@ persist and query your models.</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getConnection">
-        <div class="location">at line         line 76</div>
-        <code>                    
-    <abbr title="MongoDB\Client">Client</abbr>
-    <strong>getConnection</strong>()</code>
+        <div class="location">at         line 87</div>
+        <code>                    <abbr title="MongoDB\Client">Client</abbr>
+    <strong>getConnection</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Get the raw MongoDB connection</p>                                </div>
+                                    <p>Get the raw MongoDB connection.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="MongoDB\Client">Client</abbr></td>
+            <td><abbr title="MongoDB\Client">Client</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -248,38 +286,29 @@ persist and query your models.</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setEventTrigger">
-        <div class="location">at line         line 89</div>
+        <div class="location">at         line 99</div>
         <code>                    
-    void
-    <strong>setEventTrigger</strong>(
-    <a href="../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a> $eventTrigger)</code>
+    <strong>setEventTrigger</strong>(<a href="../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a> $eventTrigger)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Sets the event trigger for Mongolid events.</p>                                </div>
+                                    <p>Sets the event trigger for Mongolid events.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <a href="../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a></td>
+                <td><a href="../Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a></td>
                 <td>$eventTrigger</td>
-                <td>External event trigger.</td>
+                <td>external event trigger</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -288,24 +317,58 @@ persist and query your models.</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_registerSchema">
-        <div class="location">at line         line 105</div>
+        <div class="location">at         line 113</div>
         <code>                    
-    void
-    <strong>registerSchema</strong>(
-    <a href="../Mongolid/Schema.html"><abbr title="Mongolid\Schema">Schema</abbr></a> $schema)</code>
+    <strong>registerSchema</strong>(<a href="../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a> $schema)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Allow document Schemas to be registered for later use</p>                                </div>
+                                    <p>Allow document Schemas to be registered for later use.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <a href="../Mongolid/Schema.html"><abbr title="Mongolid\Schema">Schema</abbr></a></td>
+                <td><a href="../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a></td>
                 <td>$schema</td>
-                <td>Schema being registered.</td>
+                <td>schema being registered</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMapper">
+        <div class="location">at         line 127</div>
+        <code>                    <a href="../Mongolid/DataMapper/DataMapper.html"><abbr title="Mongolid\DataMapper\DataMapper">DataMapper</abbr></a>|null
+    <strong>getMapper</strong>(string $entityClass)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Retrieves a DataMapper for the given $entityClass. This can only be done
+if the Schema for that entity has been previously registered with
+registerSchema() method.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entityClass</td>
+                <td>class of the entity that needs to be mapped</td>
             </tr>
             </table>
 
@@ -314,9 +377,8 @@ persist and query your models.</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    void</td>
-            <td></td>
+            <td><a href="../Mongolid/DataMapper/DataMapper.html"><abbr title="Mongolid\DataMapper\DataMapper">DataMapper</abbr></a>|null</td>
+            <td>dataMapper configured for the $entityClass</td>
         </tr>
     </table>
 
@@ -327,41 +389,20 @@ persist and query your models.</p>                                </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getMapper">
-        <div class="location">at line         line 119</div>
-        <code>                    
-    <a href="../Mongolid/DataMapper/DataMapper.html"><abbr title="Mongolid\DataMapper\DataMapper">DataMapper</abbr></a>|null
-    <strong>getMapper</strong>(
-    <abbr title="Mongolid\string">string</abbr> $entityClass)</code>
+                    <h3 id="method_init">
+        <div class="location">at         line 140</div>
+        <code>            protected        
+    <strong>init</strong>()
+        </code>
     </h3>
     <div class="details">
-                    <div class="method-description">
-                                    <p>Retrieves a DataMapper for the given $entityClass. This can only be done
-if the Schema for that entity has been previously registered with
-registerSchema() method.</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    <abbr title="Mongolid\string">string</abbr></td>
-                <td>$entityClass</td>
-                <td>Class of the entity that needs to be mapped.</td>
-            </tr>
-            </table>
-
             
-                            <h4>Return Value</h4>
+    
 
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <a href="../Mongolid/DataMapper/DataMapper.html"><abbr title="Mongolid\DataMapper\DataMapper">DataMapper</abbr></a>|null</td>
-            <td>DataMapper configured for the $entityClass.</td>
-        </tr>
-    </table>
-
+                    <div class="method-description">
+                                    <p>Initializes the Mongolid manager.</p>                                                </div>
+                <div class="tags">
+            
             
             
                     </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Mongolid\Util\SequenceService | Mongolid ODM Api</title>
+    <title>Mongolid\Util\LocalDateTime | Mongolid ODM Api</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Mongolid_Util_SequenceService" data-root-path="../../">
+    <body id="class" data-name="class:Mongolid_Util_LocalDateTime" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,86 +66,64 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Util.html">Util</a></li><li class="backslash">\</li><li>SequenceService</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Util.html">Util</a></li><li class="backslash">\</li><li>LocalDateTime</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            SequenceService
+            LocalDateTime
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>SequenceService</strong>
+    <strong>LocalDateTime</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Sequence service will manage and provide auto-increment sequences to be used
-by the models. It can be useful for objects which the _id must be an integer
-sequence.</p>                                </div>
+            <p>This class is responsible for converting UTCDateTime from MongoDB driver in
+local date time.</p>            <p>It will be unnecessary once MongoDB driver fixes a know issue in UTCDateTime.
+The proposal was created, for more information:</p>                    </div>
     
     
     
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td class="type" id="property_collection">
-                                        protected                                        string
-                </td>
-                <td>$collection</td>
-                <td class="last">Sequences collection name on MongoDB. Default 'mongolid_sequences'.</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_connPool">
-                                        protected                                        <a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a>
-                </td>
-                <td>$connPool</td>
-                <td class="last">Connections that are going to be used to interact with the database.</td>
-                <td></td>
-            </tr>
-            </table>
-
     
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    static&nbsp;<a target="_blank" href="http://php.net/DateTime">DateTime</a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a> $connPool, string $collection = &#039;mongolid_sequences&#039;)
+                    <a href="#method_get">get</a>(<abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr> $date)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Retrieves DateTime instance using default timezone.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getNextValue">getNextValue</a>(string $sequenceName)
+                    <a href="#method_format">format</a>(<abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr> $date, string $format = &#039;d/m/Y H:i:s&#039;)
         
-                                            <p>Get next value for the sequence.</p>                </div>
+                                            <p>Retrieves formated date time using timezone.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="MongoDB\Collection">Collection</abbr>
+                    static&nbsp;int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_rawCollection">rawCollection</a>()
+                    <a href="#method_timestamp">timestamp</a>(<abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr> $date)
         
-                                            <p>Get the actual MongoDB Collection object.</p>                </div>
+                                            <p>Retrieves timestamp using timezone.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -155,44 +133,10 @@ sequence.</p>                                </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at         line 33</div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a> $connPool, string $collection = &#039;mongolid_sequences&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a></td>
-                <td>$connPool</td>
-                <td>the connections that are going to be used to interact with the database</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$collection</td>
-                <td>the collection where the sequences will be stored</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getNextValue">
-        <div class="location">at         line 46</div>
-        <code>                    int
-    <strong>getNextValue</strong>(string $sequenceName)
+                    <h3 id="method_get">
+        <div class="location">at         line 27</div>
+        <code>        static            <a target="_blank" href="http://php.net/DateTime">DateTime</a>
+    <strong>get</strong>(<abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr> $date)
         </code>
     </h3>
     <div class="details">
@@ -200,15 +144,15 @@ sequence.</p>                                </div>
     
 
                     <div class="method-description">
-                                    <p>Get next value for the sequence.</p>                                                </div>
+                                    <p>Retrieves DateTime instance using default timezone.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$sequenceName</td>
-                <td>sequence identifier string</td>
+                <td><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></td>
+                <td>$date</td>
+                <td></td>
             </tr>
             </table>
 
@@ -217,7 +161,7 @@ sequence.</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td><a target="_blank" href="http://php.net/DateTime">DateTime</a></td>
             <td></td>
         </tr>
     </table>
@@ -229,10 +173,10 @@ sequence.</p>                                </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_rawCollection">
-        <div class="location">at         line 66</div>
-        <code>            protected        <abbr title="MongoDB\Collection">Collection</abbr>
-    <strong>rawCollection</strong>()
+                    <h3 id="method_format">
+        <div class="location">at         line 43</div>
+        <code>        static            string
+    <strong>format</strong>(<abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr> $date, string $format = &#039;d/m/Y H:i:s&#039;)
         </code>
     </h3>
     <div class="details">
@@ -240,14 +184,69 @@ sequence.</p>                                </div>
     
 
                     <div class="method-description">
-                                    <p>Get the actual MongoDB Collection object.</p>                                                </div>
+                                    <p>Retrieves formated date time using timezone.</p>                                                </div>
                 <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></td>
+                <td>$date</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$format</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="MongoDB\Collection">Collection</abbr></td>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_timestamp">
+        <div class="location">at         line 57</div>
+        <code>        static            int
+    <strong>timestamp</strong>(<abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr> $date)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Retrieves timestamp using timezone.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></td>
+                <td>$date</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
             <td></td>
         </tr>
     </table>

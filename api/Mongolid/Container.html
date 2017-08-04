@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,9 +66,7 @@
                 <div class="namespace-breadcrumbs">
         <ol class="breadcrumb">
             <li><span class="label label-default">Namespace</span></li>
-                                                        <li><a href="../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../Mongolid/Container.html">Container</a></li>
-    
+                    <li><a href="../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../Mongolid/Container.html">Container</a></li><li class="backslash">\</li>
         </ol>
     </div>
             <div id="page-content">
@@ -81,7 +82,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../Mongolid/Container/Ioc.html"><abbr title="Mongolid\Container\Ioc">Ioc</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     This class is a simple Facade for a Illuminate\Container\Container
 in order to use the Container as IOC at all classes.

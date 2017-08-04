@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,8 +66,7 @@
                 <div class="namespace-breadcrumbs">
         <ol class="breadcrumb">
             <li><span class="label label-default">Namespace</span></li>
-                                                        <li><a href="Mongolid.html">Mongolid</a></li>
-    
+                    <li><a href="Mongolid.html">Mongolid</a></li><li class="backslash">\</li>
         </ol>
     </div>
             <div id="page-content">
@@ -75,7 +77,7 @@
 
             <h2>Namespaces</h2>
         <div class="namespace-list">
-            <a href="Mongolid/Connection.html">Mongolid\Connection</a><a href="Mongolid/Container.html">Mongolid\Container</a><a href="Mongolid/Cursor.html">Mongolid\Cursor</a><a href="Mongolid/DataMapper.html">Mongolid\DataMapper</a><a href="Mongolid/Event.html">Mongolid\Event</a><a href="Mongolid/Model.html">Mongolid\Model</a><a href="Mongolid/Util.html">Mongolid\Util</a>        </div>
+            <a href="Mongolid/Connection.html">Mongolid\Connection</a><a href="Mongolid/Container.html">Mongolid\Container</a><a href="Mongolid/Cursor.html">Mongolid\Cursor</a><a href="Mongolid/DataMapper.html">Mongolid\DataMapper</a><a href="Mongolid/Event.html">Mongolid\Event</a><a href="Mongolid/Exception.html">Mongolid\Exception</a><a href="Mongolid/Model.html">Mongolid\Model</a><a href="Mongolid/Schema.html">Mongolid\Schema</a><a href="Mongolid/Util.html">Mongolid\Util</a>        </div>
     
             <h2>Classes</h2>
         
@@ -83,7 +85,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/ActiveRecord.html"><abbr title="Mongolid\ActiveRecord">ActiveRecord</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     The Mongolid\ActiveRecord base class will ensure to enable your entity to
 have methods to interact with the database. It means that 'save', 'insert',
@@ -92,30 +95,12 @@ have methods to interact with the database. It means that 'save', 'insert',
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Mongolid/DynamicSchema.html"><abbr title="Mongolid\DynamicSchema">DynamicSchema</abbr></a>
-                                    </div>
-                <div class="col-md-6">
-                    The DynamicSchema will accept additional fields that are not specified in
-the $schema property. This is usefull if you doesn't have a clear idea of how
-the document will look like
-                </div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
                                             <a href="Mongolid/Manager.html"><abbr title="Mongolid\Manager">Manager</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Wraps the Mongolid initialization. The main purpose of the Manager is to make
 it easy to use without any framework.
-                </div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                                            <a href="Mongolid/Schema.html"><abbr title="Mongolid\Schema">Schema</abbr></a>
-                                    </div>
-                <div class="col-md-6">
-                    A schema maps to a MongoDB collection and defines the shape of the documents
-within that collection.
                 </div>
             </div>
             </div>

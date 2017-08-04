@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Mongolid\Model\DocumentEmbedder | Mongolid ODM Api</title>
+    <title>Mongolid\DataMapper\BulkWrite | Mongolid ODM Api</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Mongolid_Model_DocumentEmbedder" data-root-path="../../">
+    <body id="class" data-name="class:Mongolid_DataMapper_BulkWrite" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,86 +66,118 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Model.html">Model</a></li><li class="backslash">\</li><li>DocumentEmbedder</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/DataMapper.html">DataMapper</a></li><li class="backslash">\</li><li>BulkWrite</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            DocumentEmbedder
+            BulkWrite
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>DocumentEmbedder</strong>
+    <strong>BulkWrite</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Document embeder is a service that will embed documents within each other.</p>                                </div>
+            <p>This class is meant to provide a better API for handling
+with bulk operations.</p>            <p>It's an incomplete and highly opinionated abstraction
+but yet flexible, since you are able to access the
+driver's API and can work with both ActiveRecord and
+DataMapper, since this class relies on the Schema and
+both classes implements HasSchemaInterface.</p>                    </div>
     
     
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_options">
+                                        protected                                        array
+                </td>
+                <td>$options</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_bulkWrite">
+                                        protected                                        <abbr title="MongoDB\Driver\BulkWrite">BulkWrite</abbr>
+                </td>
+                <td>$bulkWrite</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_schema">
+                                        protected                                        <a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a>
+                </td>
+                <td>$schema</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_embed">embed</a>(mixed $parent, string $field, mixed $entity)
+                    <a href="#method___construct">__construct</a>(<a href="../../Mongolid/Schema/HasSchemaInterface.html"><abbr title="Mongolid\Schema\HasSchemaInterface">HasSchemaInterface</abbr></a> $entity)
         
-                                            <p>Embeds the given $entity into $field of $parent. This method will also
-consider the _id of the $entity in order to update it if it is already
-present in $field.</p>                </div>
+                                            <p>BulkWrite constructor.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    <abbr title="MongoDB\Driver\BulkWrite">BulkWrite</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_unembed">unembed</a>(mixed $parent, string $field, mixed $entity)
+                    <a href="#method_getBulkWrite">getBulkWrite</a>()
         
-                                            <p>Removes the given $entity from $field of $parent. This method will
-consider the _id of the $entity in order to remove it.</p>                </div>
+                                            <p>Get the BulkWrite object to perform other operations
+not covered by this class.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    <abbr title="Mongolid\DataMapper\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_attach">attach</a>(mixed $parent, string $field, object|array $entity)
+                    <a href="#method_setBulkWrite">setBulkWrite</a>(<abbr title="MongoDB\Driver\BulkWrite">BulkWrite</abbr> $bulkWrite)
         
-                                            <p>Attach a new _id reference into $field of $parent.</p>                </div>
+                                            <p>Set BulkWrite object that will receive all operations
+and later be executed.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_detach">detach</a>(mixed $parent, string $field, mixed $entity)
+                    <a href="#method_updateOne">updateOne</a>(<abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr>|string $id, array $dataToSet, array $options = [&#039;upsert&#039; =&gt; true])
         
-                                            <p>Removes an _id reference from $field of $parent.</p>                </div>
+                                            <p>Add an <code>update</code> operation to the Bulk, where only one record is updated, by <code>_id</code>.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr>|mixed
+                    <abbr title="MongoDB\Driver\WriteResult">WriteResult</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getId">getId</a>(mixed $object)
+                    <a href="#method_execute">execute</a>(int $writeConcern = 1)
         
-                                            <p>Gets the _id of the given object or array. If there is no _id in it a new
-_id will be generated and set on the object (while still returning it).</p>                </div>
+                                            <p>Execute the BulkWrite, using a connection from the Pool.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -155,62 +187,10 @@ _id will be generated and set on the object (while still returning it).</p>     
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_embed">
-        <div class="location">at         line 23</div>
-        <code>                    bool
-    <strong>embed</strong>(mixed $parent, string $field, mixed $entity)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Embeds the given $entity into $field of $parent. This method will also
-consider the _id of the $entity in order to update it if it is already
-present in $field.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$parent</td>
-                <td>the object where the $entity will be embedded</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$field</td>
-                <td>name of the field of the object where the document will be embedded</td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$entity</td>
-                <td>entity that will be embedded within $parent</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>Success</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_unembed">
+                    <h3 id="method___construct">
         <div class="location">at         line 45</div>
-        <code>                    bool
-    <strong>unembed</strong>(mixed $parent, string $field, mixed $entity)
+        <code>                    
+    <strong>__construct</strong>(<a href="../../Mongolid/Schema/HasSchemaInterface.html"><abbr title="Mongolid\Schema\HasSchemaInterface">HasSchemaInterface</abbr></a> $entity)
         </code>
     </h3>
     <div class="details">
@@ -218,36 +198,47 @@ present in $field.</p>                                                </div>
     
 
                     <div class="method-description">
-                                    <p>Removes the given $entity from $field of $parent. This method will
-consider the _id of the $entity in order to remove it.</p>                                                </div>
+                                    <p>BulkWrite constructor.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
-                <td>$parent</td>
-                <td>the object where the $entity will be removed</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$field</td>
-                <td>name of the field of the object where the document is</td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
+                <td><a href="../../Mongolid/Schema/HasSchemaInterface.html"><abbr title="Mongolid\Schema\HasSchemaInterface">HasSchemaInterface</abbr></a></td>
                 <td>$entity</td>
-                <td>entity that will be removed from $parent</td>
+                <td></td>
             </tr>
             </table>
 
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getBulkWrite">
+        <div class="location">at         line 57</div>
+        <code>                    <abbr title="MongoDB\Driver\BulkWrite">BulkWrite</abbr>
+    <strong>getBulkWrite</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get the BulkWrite object to perform other operations
+not covered by this class.</p>                                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td>Success</td>
+            <td><abbr title="MongoDB\Driver\BulkWrite">BulkWrite</abbr></td>
+            <td></td>
         </tr>
     </table>
 
@@ -258,10 +249,10 @@ consider the _id of the $entity in order to remove it.</p>                      
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_attach">
+                    <h3 id="method_setBulkWrite">
         <div class="location">at         line 70</div>
-        <code>                    bool
-    <strong>attach</strong>(mixed $parent, string $field, object|array $entity)
+        <code>                    <abbr title="Mongolid\DataMapper\$this">$this</abbr>
+    <strong>setBulkWrite</strong>(<abbr title="MongoDB\Driver\BulkWrite">BulkWrite</abbr> $bulkWrite)
         </code>
     </h3>
     <div class="details">
@@ -269,25 +260,16 @@ consider the _id of the $entity in order to remove it.</p>                      
     
 
                     <div class="method-description">
-                                    <p>Attach a new _id reference into $field of $parent.</p>                                                </div>
+                                    <p>Set BulkWrite object that will receive all operations
+and later be executed.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
-                <td>$parent</td>
-                <td>the object where $entity will be referenced</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$field</td>
-                <td>the field where the _id reference of $entity will be stored</td>
-            </tr>
-                    <tr>
-                <td>object|array</td>
-                <td>$entity</td>
-                <td>the object that is being attached</td>
+                <td><abbr title="MongoDB\Driver\BulkWrite">BulkWrite</abbr></td>
+                <td>$bulkWrite</td>
+                <td></td>
             </tr>
             </table>
 
@@ -296,8 +278,8 @@ consider the _id of the $entity in order to remove it.</p>                      
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td>Success</td>
+            <td><abbr title="Mongolid\DataMapper\$this">$this</abbr></td>
+            <td></td>
         </tr>
     </table>
 
@@ -308,10 +290,10 @@ consider the _id of the $entity in order to remove it.</p>                      
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_detach">
-        <div class="location">at         line 96</div>
-        <code>                    bool
-    <strong>detach</strong>(mixed $parent, string $field, mixed $entity)
+                    <h3 id="method_updateOne">
+        <div class="location">at         line 88</div>
+        <code>                    
+    <strong>updateOne</strong>(<abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr>|string $id, array $dataToSet, array $options = [&#039;upsert&#039; =&gt; true])
         </code>
     </h3>
     <div class="details">
@@ -319,49 +301,50 @@ consider the _id of the $entity in order to remove it.</p>                      
     
 
                     <div class="method-description">
-                                    <p>Removes an _id reference from $field of $parent.</p>                                                </div>
+                                    <p>Add an <code>update</code> operation to the Bulk, where only one record is updated, by <code>_id</code>.</p>                    <p>Be aware that working with multiple levels of nesting on <code>$dataToSet</code> may have
+an undesired behavior that could lead to data loss on a specific key.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
-                <td>$parent</td>
-                <td>the object where $entity reference will be removed</td>
+                <td><abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr>|string</td>
+                <td>$id</td>
+                <td></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$field</td>
-                <td>the field where the _id reference of $entity is stored</td>
+                <td>array</td>
+                <td>$dataToSet</td>
+                <td></td>
             </tr>
                     <tr>
-                <td>mixed</td>
-                <td>$entity</td>
-                <td>the object being detached or its _id</td>
+                <td>array</td>
+                <td>$options</td>
+                <td></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
+            
+            
+                            <h4>See also</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>Success</td>
-        </tr>
-    </table>
+                    <tr>
+                <td>https://docs.mongodb.com/manual/reference/operator/update/set/#set-top-level-fields</td>
+                <td></td>
+            </tr>
+            </table>
 
-            
-            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getId">
-        <div class="location">at         line 120</div>
-        <code>            protected        <abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr>|mixed
-    <strong>getId</strong>(mixed $object)
+                    <h3 id="method_execute">
+        <div class="location">at         line 105</div>
+        <code>                    <abbr title="MongoDB\Driver\WriteResult">WriteResult</abbr>
+    <strong>execute</strong>(int $writeConcern = 1)
         </code>
     </h3>
     <div class="details">
@@ -369,16 +352,15 @@ consider the _id of the $entity in order to remove it.</p>                      
     
 
                     <div class="method-description">
-                                    <p>Gets the _id of the given object or array. If there is no _id in it a new
-_id will be generated and set on the object (while still returning it).</p>                                                </div>
+                                    <p>Execute the BulkWrite, using a connection from the Pool.</p>                    <p>The collection is inferred from entity's collection name.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
-                <td>$object</td>
-                <td>the object|array that the _id will be retrieved from</td>
+                <td>int</td>
+                <td>$writeConcern</td>
+                <td></td>
             </tr>
             </table>
 
@@ -387,7 +369,7 @@ _id will be generated and set on the object (while still returning it).</p>     
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr>|mixed</td>
+            <td><abbr title="MongoDB\Driver\WriteResult">WriteResult</abbr></td>
             <td></td>
         </tr>
     </table>

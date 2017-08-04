@@ -19,11 +19,14 @@
     
     </head>
 
-    <body id="class" data-name="class:Mongolid_Schema" data-root-path="../">
+    <body id="namespace" data-name="namespace:Mongolid_Schema" data-root-path="../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -60,300 +63,59 @@
         </div>
     </nav>
 
-                        <div class="namespace-breadcrumbs">
-            <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../Mongolid.html">Mongolid</a></li>
-    
-                <li>Schema</li>
-            </ol>
-        </div>
-                <div id="page-content">
+                <div class="namespace-breadcrumbs">
+        <ol class="breadcrumb">
+            <li><span class="label label-default">Namespace</span></li>
+                    <li><a href="../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../Mongolid/Schema.html">Schema</a></li><li class="backslash">\</li>
+        </ol>
+    </div>
+            <div id="page-content">
                 
     <div class="page-header">
-        <h1>Schema</h1>
+        <h1>Mongolid\Schema</h1>
     </div>
-
-    <p>    class
-    <strong>Schema</strong>
-</p>
-
-            <div class="description">
-            <p>A schema maps to a MongoDB collection and defines the shape of the documents
-within that collection.</p>                    </div>
-    
-    
-    
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td class="type" id="property_dynamic">
-                                                                                
-    boolean
-                </td>
-                <td>$dynamic</td>
-                <td class="last">The $dynamic property tells if the schema will accept additional fields
-that are not specified in the $fields property. This is usefull if you
-doesn't have a strict document format or if you want to take full
-advantage of the "schemaless" nature of MongoDB.</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_collection">
-                                                                                
-    string
-                </td>
-                <td>$collection</td>
-                <td class="last">Name of the collection where this kind of document is going to be saved
-or retrieved from</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_fields">
-                                                                                
-    string[]
-                </td>
-                <td>$fields</td>
-                <td class="last">Tells how a document should look like. If an scalar type is used, it will
-perform a cast into the value. Othewise the schema will use the type as
-the name of the method to be called. See 'objectId' method for example.</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_entityClass">
-                                                                                
-    string
-                </td>
-                <td>$entityClass</td>
-                <td class="last">Name of the class that will be used to represent a document of this
-Schema when retrieve from the database.</td>
-                <td></td>
-            </tr>
-            </table>
 
     
-            <h2>Methods</h2>
-
-            <div class="container-fluid underlined">
+            <h2>Classes</h2>
+        
+    <div class="container-fluid underlined">
                     <div class="row">
-                <div class="col-md-2 type">
-                    
-    <a target="_blank" href="http://php.net/MongoDB\BSON\ObjectID"><abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr></a>|mixed
+                <div class="col-md-6">
+                                            <a href="../Mongolid/Schema/DynamicSchema.html"><abbr title="Mongolid\Schema\DynamicSchema">DynamicSchema</abbr></a>
+                                            
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_objectId">objectId</a>(
-    mixed $value = null)
-                                            <p>Filters any field in the $fields that has it's value specified as a
-'objectId'. It will wraps the $value, if any, into a ObjectID object</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    integer
+                <div class="col-md-6">
+                    The DynamicSchema will accept additional fields that are not specified in
+the $schema property. This is useful if you does not have a clear idea
+of how the document will look like.
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_sequence">sequence</a>(
-    <abbr title="Mongolid\int">int</abbr> $value = null)
-                                            <p>Prepares the field to have a sequence. If $value is zero or not defined
-a new auto-increment number will be "generated" for the collection of
-the schema. The sequence generation is done by the SequenceService.</p>                </div>
-                <div class="col-md-2"></div>
             </div>
                     <div class="row">
-                <div class="col-md-2 type">
-                    
-    <a target="_blank" href="http://php.net/MongoDB\BSON\UTCDateTime"><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></a>
+                <div class="col-md-6">
+                                            <a href="../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a>
+                                            
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_createdAtTimestamp">createdAtTimestamp</a>(
-    mixed|null $value)
-                                            <p>Prepares the field to be the datetime that the document has been created</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    A schema maps to a MongoDB collection and defines the shape of the documents
+within that collection.
+                </div>
             </div>
+            </div>
+    
+            <h2>Interfaces</h2>
+        
+    <div class="container-fluid underlined">
                     <div class="row">
-                <div class="col-md-2 type">
-                    
-    <a target="_blank" href="http://php.net/MongoDB\BSON\UTCDateTime"><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></a>
+                <div class="col-md-6">
+                                            <em><a href="../Mongolid/Schema/HasSchemaInterface.html"><abbr title="Mongolid\Schema\HasSchemaInterface">HasSchemaInterface</abbr></a></em>
+                                            
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_updatedAtTimestamp">updatedAtTimestamp</a>(
-    mixed|null $value)
-                                            <p>Prepares the field to be now</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    
+                </div>
             </div>
             </div>
-
-
-        <h2>Details</h2>
-
-            <div id="method-details">
-                    <div class="method-item">
-                    <h3 id="method_objectId">
-        <div class="location">at line         line 64</div>
-        <code>                    
-    <a target="_blank" href="http://php.net/MongoDB\BSON\ObjectID"><abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr></a>|mixed
-    <strong>objectId</strong>(
-    mixed $value = null)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Filters any field in the $fields that has it's value specified as a
-'objectId'. It will wraps the $value, if any, into a ObjectID object</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    mixed</td>
-                <td>$value</td>
-                <td>Value that may be converted to ObjectID.</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <a target="_blank" href="http://php.net/MongoDB\BSON\ObjectID"><abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr></a>|mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_sequence">
-        <div class="location">at line         line 86</div>
-        <code>                    
-    integer
-    <strong>sequence</strong>(
-    <abbr title="Mongolid\int">int</abbr> $value = null)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Prepares the field to have a sequence. If $value is zero or not defined
-a new auto-increment number will be "generated" for the collection of
-the schema. The sequence generation is done by the SequenceService.</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    <abbr title="Mongolid\int">int</abbr></td>
-                <td>$value</td>
-                <td>Value that will be evaluated.</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    integer</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_createdAtTimestamp">
-        <div class="location">at line         line 103</div>
-        <code>                    
-    <a target="_blank" href="http://php.net/MongoDB\BSON\UTCDateTime"><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></a>
-    <strong>createdAtTimestamp</strong>(
-    mixed|null $value)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Prepares the field to be the datetime that the document has been created</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    mixed|null</td>
-                <td>$value</td>
-                <td>Value that will be evaluated.</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <a target="_blank" href="http://php.net/MongoDB\BSON\UTCDateTime"><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_updatedAtTimestamp">
-        <div class="location">at line         line 119</div>
-        <code>                    
-    <a target="_blank" href="http://php.net/MongoDB\BSON\UTCDateTime"><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></a>
-    <strong>updatedAtTimestamp</strong>(
-    mixed|null $value)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Prepares the field to be now</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    mixed|null</td>
-                <td>$value</td>
-                <td>Value that will be evaluated.</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <a target="_blank" href="http://php.net/MongoDB\BSON\UTCDateTime"><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-            </div>
-
+    
     
             </div>
                 <div id="footer">

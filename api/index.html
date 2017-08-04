@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -75,7 +78,9 @@
                                                             <li><a href="Mongolid/Cursor.html">Mongolid\Cursor</a></li>
                                                             <li><a href="Mongolid/DataMapper.html">Mongolid\DataMapper</a></li>
                                                             <li><a href="Mongolid/Event.html">Mongolid\Event</a></li>
+                                                            <li><a href="Mongolid/Exception.html">Mongolid\Exception</a></li>
                                                             <li><a href="Mongolid/Model.html">Mongolid\Model</a></li>
+                                                            <li><a href="Mongolid/Schema.html">Mongolid\Schema</a></li>
                                                             <li><a href="Mongolid/Util.html">Mongolid\Util</a></li>
                             </ul>
             </div>

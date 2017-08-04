@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,24 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">trait</span></li>
-                                                            <li><a href="../../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../../Mongolid/Model.html">Model</a></li>
-    
-                <li>Relations</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Model.html">Model</a></li><li class="backslash">\</li><li>Relations</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>Relations</h1>
+        <h1>
+            Relations
+                
+        </h1>
     </div>
 
     <p>    trait
     <strong>Relations</strong>
 </p>
 
+        
+    
+
             <div class="description">
-            <p>It is supossed to be used in model classes in general</p>                    </div>
+            <p>It is supposed to be used in model classes in general.</p>                                </div>
     
     
     
@@ -90,13 +96,51 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    void
+                    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_embed">embed</a>(
-    <abbr title="Mongolid\Model\string">string</abbr> $field, 
-    mixed $obj)
+                    <a href="#method_referencesOne">referencesOne</a>(string $entity, string $field)
+        
+                                            <p>Returns the referenced documents as objects.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_referencesMany">referencesMany</a>(string $entity, string $field)
+        
+                                            <p>Returns the cursor for the referenced documents as objects.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Mongolid\Model\Model">Model</abbr>|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_embedsOne">embedsOne</a>(string $entity, string $field)
+        
+                                            <p>Return a embedded documents as object.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Mongolid/Cursor/EmbeddedCursor.html"><abbr title="Mongolid\Cursor\EmbeddedCursor">EmbeddedCursor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_embedsMany">embedsMany</a>(string $entity, string $field)
+        
+                                            <p>Return array of embedded documents as objects.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_embed">embed</a>(string $field, mixed $obj)
+        
                                             <p>Embed a new document to an attribute. It will also generate an
 _id for the document if it's not present.</p>                </div>
                 <div class="col-md-2"></div>
@@ -104,12 +148,10 @@ _id for the document if it's not present.</p>                </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_unembed">unembed</a>(
-    <abbr title="Mongolid\Model\string">string</abbr> $field, 
-    mixed $obj)
+                    <a href="#method_unembed">unembed</a>(string $field, mixed $obj)
+        
                                             <p>Removes an embedded document from the given field. It does that by using
 the _id of the given $obj.</p>                </div>
                 <div class="col-md-2"></div>
@@ -117,12 +159,10 @@ the _id of the given $obj.</p>                </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_attach">attach</a>(
-    <abbr title="Mongolid\Model\string">string</abbr> $field, 
-    mixed $obj)
+                    <a href="#method_attach">attach</a>(string $field, mixed $obj)
+        
                                             <p>Attach document _id reference to an attribute. It will also generate an
 _id for the document if it's not present.</p>                </div>
                 <div class="col-md-2"></div>
@@ -130,12 +170,10 @@ _id for the document if it's not present.</p>                </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_detach">detach</a>(
-    <abbr title="Mongolid\Model\string">string</abbr> $field, 
-    mixed $obj)
+                    <a href="#method_detach">detach</a>(string $field, mixed $obj)
+        
                                             <p>Removes a document _id reference from an attribute. It will remove the
 _id of the given $obj from inside the given $field.</p>                </div>
                 <div class="col-md-2"></div>
@@ -147,33 +185,31 @@ _id of the given $obj from inside the given $field.</p>                </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_embed">
-        <div class="location">at line         line 106</div>
-        <code>                    
-    void
-    <strong>embed</strong>(
-    <abbr title="Mongolid\Model\string">string</abbr> $field, 
-    mixed $obj)</code>
+                    <h3 id="method_referencesOne">
+        <div class="location">at         line 26</div>
+        <code>            protected        mixed
+    <strong>referencesOne</strong>(string $entity, string $field)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Embed a new document to an attribute. It will also generate an
-_id for the document if it's not present.</p>                                </div>
+                                    <p>Returns the referenced documents as objects.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="Mongolid\Model\string">string</abbr></td>
-                <td>$field</td>
-                <td>Field to where the $obj will be embedded.</td>
+                <td>string</td>
+                <td>$entity</td>
+                <td>class of the entity or of the schema of the entity</td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
-                <td>$obj</td>
-                <td>Document or model instance.</td>
+                <td>string</td>
+                <td>$field</td>
+                <td>the field where the _id is stored</td>
             </tr>
             </table>
 
@@ -182,12 +218,183 @@ _id for the document if it's not present.</p>                                </d
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    void</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
 
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_referencesMany">
+        <div class="location">at         line 54</div>
+        <code>            protected        array
+    <strong>referencesMany</strong>(string $entity, string $field)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the cursor for the referenced documents as objects.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entity</td>
+                <td>class of the entity or of the schema of the entity</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$field</td>
+                <td>the field where the _ids are stored</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_embedsOne">
+        <div class="location">at         line 86</div>
+        <code>            protected        <abbr title="Mongolid\Model\Model">Model</abbr>|null
+    <strong>embedsOne</strong>(string $entity, string $field)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a embedded documents as object.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entity</td>
+                <td>class of the entity or of the schema of the entity</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$field</td>
+                <td>field where the embedded document is stored</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Mongolid\Model\Model">Model</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_embedsMany">
+        <div class="location">at         line 109</div>
+        <code>            protected        <a href="../../Mongolid/Cursor/EmbeddedCursor.html"><abbr title="Mongolid\Cursor\EmbeddedCursor">EmbeddedCursor</abbr></a>
+    <strong>embedsMany</strong>(string $entity, string $field)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return array of embedded documents as objects.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entity</td>
+                <td>class of the entity or of the schema of the entity</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$field</td>
+                <td>field where the embedded documents are stored</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Mongolid/Cursor/EmbeddedCursor.html"><abbr title="Mongolid\Cursor\EmbeddedCursor">EmbeddedCursor</abbr></a></td>
+            <td>Array with the embedded documents</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_embed">
+        <div class="location">at         line 131</div>
+        <code>                    
+    <strong>embed</strong>(string $field, mixed $obj)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Embed a new document to an attribute. It will also generate an
+_id for the document if it's not present.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$field</td>
+                <td>field to where the $obj will be embedded</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$obj</td>
+                <td>document or model instance</td>
+            </tr>
+            </table>
+
+            
             
             
                     </div>
@@ -196,46 +403,35 @@ _id for the document if it's not present.</p>                                </d
             </div>
                     <div class="method-item">
                     <h3 id="method_unembed">
-        <div class="location">at line         line 121</div>
+        <div class="location">at         line 144</div>
         <code>                    
-    void
-    <strong>unembed</strong>(
-    <abbr title="Mongolid\Model\string">string</abbr> $field, 
-    mixed $obj)</code>
+    <strong>unembed</strong>(string $field, mixed $obj)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Removes an embedded document from the given field. It does that by using
-the _id of the given $obj.</p>                                </div>
+the _id of the given $obj.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="Mongolid\Model\string">string</abbr></td>
+                <td>string</td>
                 <td>$field</td>
-                <td>Name of the field where the $obj is embeded.</td>
+                <td>name of the field where the $obj is embeded</td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$obj</td>
-                <td>Document, model instance or _id.</td>
+                <td>document, model instance or _id</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -244,46 +440,35 @@ the _id of the given $obj.</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_attach">
-        <div class="location">at line         line 136</div>
+        <div class="location">at         line 157</div>
         <code>                    
-    void
-    <strong>attach</strong>(
-    <abbr title="Mongolid\Model\string">string</abbr> $field, 
-    mixed $obj)</code>
+    <strong>attach</strong>(string $field, mixed $obj)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Attach document _id reference to an attribute. It will also generate an
-_id for the document if it's not present.</p>                                </div>
+_id for the document if it's not present.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="Mongolid\Model\string">string</abbr></td>
+                <td>string</td>
                 <td>$field</td>
-                <td>Name of the field where the reference will be stored.</td>
+                <td>name of the field where the reference will be stored</td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$obj</td>
-                <td>Document, model instance or _id to be referenced.</td>
+                <td>document, model instance or _id to be referenced</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -292,46 +477,35 @@ _id for the document if it's not present.</p>                                </d
             </div>
                     <div class="method-item">
                     <h3 id="method_detach">
-        <div class="location">at line         line 151</div>
+        <div class="location">at         line 170</div>
         <code>                    
-    void
-    <strong>detach</strong>(
-    <abbr title="Mongolid\Model\string">string</abbr> $field, 
-    mixed $obj)</code>
+    <strong>detach</strong>(string $field, mixed $obj)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Removes a document _id reference from an attribute. It will remove the
-_id of the given $obj from inside the given $field.</p>                                </div>
+_id of the given $obj from inside the given $field.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="Mongolid\Model\string">string</abbr></td>
+                <td>string</td>
                 <td>$field</td>
-                <td>Field where the reference is stored.</td>
+                <td>field where the reference is stored</td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$obj</td>
-                <td>Document, model instance or _id that have been referenced by $field.</td>
+                <td>document, model instance or _id that have been referenced by $field</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>

@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,9 +66,7 @@
                 <div class="namespace-breadcrumbs">
         <ol class="breadcrumb">
             <li><span class="label label-default">Namespace</span></li>
-                                                        <li><a href="../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../Mongolid/Model.html">Model</a></li>
-    
+                    <li><a href="../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../Mongolid/Model.html">Model</a></li><li class="backslash">\</li>
         </ol>
     </div>
             <div id="page-content">
@@ -81,9 +82,10 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../Mongolid/Model/Attributes.html"><abbr title="Mongolid\Model\Attributes">Attributes</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
-                    This trait adds attribute getter, setters and also a usefull
+                    This trait adds attribute getter, setters and also a useful
 <code>fill</code> method that can be used with $fillable and $guarded
 properties to make sure that only the correct attributes
 will be set.
@@ -92,7 +94,8 @@ will be set.
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../Mongolid/Model/DocumentEmbedder.html"><abbr title="Mongolid\Model\DocumentEmbedder">DocumentEmbedder</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Document embeder is a service that will embed documents within each other.
                 </div>
@@ -100,13 +103,39 @@ will be set.
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../Mongolid/Model/Relations.html"><abbr title="Mongolid\Model\Relations">Relations</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
-                    It is supossed to be used in model classes in general
+                    It is supposed to be used in model classes in general.
                 </div>
             </div>
             </div>
     
+            <h2>Interfaces</h2>
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Mongolid/Model/AttributesAccessInterface.html"><abbr title="Mongolid\Model\AttributesAccessInterface">AttributesAccessInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    This interface declares attribute getter, setters and also a useful
+<code>fill</code> method.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Mongolid/Model/PolymorphableInterface.html"><abbr title="Mongolid\Model\PolymorphableInterface">PolymorphableInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    If a model implements the PolymorphableInterface it means that, whenever the
+entity is being "recovered" from the database, it will call the polymorph
+method and retrieve the object returned from it.
+                </div>
+            </div>
+            </div>
     
     
             </div>

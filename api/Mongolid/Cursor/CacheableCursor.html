@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Mongolid\Cursor\Cursor | Mongolid ODM Api</title>
+    <title>Mongolid\Cursor\CacheableCursor | Mongolid ODM Api</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Mongolid_Cursor_Cursor" data-root-path="../../">
+    <body id="class" data-name="class:Mongolid_Cursor_CacheableCursor" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,32 +66,44 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Cursor.html">Cursor</a></li><li class="backslash">\</li><li>Cursor</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Cursor.html">Cursor</a></li><li class="backslash">\</li><li>CacheableCursor</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Cursor
+            CacheableCursor
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>Cursor</strong>        implements
-        <a href="../../Mongolid/Cursor/CursorInterface.html"><abbr title="Mongolid\Cursor\CursorInterface">CursorInterface</abbr></a>, <a target="_blank" href="http://php.net/Serializable">Serializable</a>
+    <strong>CacheableCursor</strong>        extends <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>This class wraps the query execution and the actual creation of the driver cursor.</p>            <p>By doing this we can, call 'sort', 'skip', 'limit' and others after calling
-'where'. Because the mongodb library's MongoDB\Cursor is much more
-limited (in that regard) than the old driver MongoCursor.</p>                    </div>
+            <p>This class wraps the query execution and the actual creation of the driver
+cursor. But upon it's creation it will already retrieve documents from the
+database and store the retrieved documents. By doing this, it is possible
+to serialize the results and save for later use.</p>                                </div>
     
     
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>DOCUMENT_LIMIT</td>
+                <td class="last">
+                    <p><em>Limits the amount of documents that will be cached for performance reasons.</em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
     
             <h2>Properties</h2>
 
@@ -102,7 +114,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                 </td>
                 <td>$entitySchema</td>
                 <td class="last">Schema that describes the entity that will be retrieved when iterating through the cursor.</td>
-                <td></td>
+                <td><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#property_entitySchema"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_collection">
@@ -110,7 +122,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                 </td>
                 <td>$collection</td>
                 <td class="last"></td>
-                <td></td>
+                <td><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#property_collection"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_command">
@@ -118,7 +130,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                 </td>
                 <td>$command</td>
                 <td class="last">The command that is being called in the $collection.</td>
-                <td></td>
+                <td><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#property_command"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_params">
@@ -126,7 +138,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                 </td>
                 <td>$params</td>
                 <td class="last">The parameters of the $command.</td>
-                <td></td>
+                <td><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#property_params"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_cursor">
@@ -134,7 +146,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                 </td>
                 <td>$cursor</td>
                 <td class="last">The MongoDB cursor used to interact with db.</td>
-                <td></td>
+                <td><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#property_cursor"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_position">
@@ -142,7 +154,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                 </td>
                 <td>$position</td>
                 <td class="last">Iterator position (to be used with foreach).</td>
-                <td></td>
+                <td><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#property_position"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_assembler">
@@ -150,6 +162,32 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                 </td>
                 <td>$assembler</td>
                 <td class="last">Have the responsibility of assembling the data coming from the database into actual entities.</td>
+                <td><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#property_assembler"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_documents">
+                                        protected                                        array
+                </td>
+                <td>$documents</td>
+                <td class="last">The documents that were retrieved from the database in a serializable way.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_originalLimit">
+                                        protected                                        <abbr title="Mongolid\Cursor\ìnteger">ìnteger</abbr>
+                </td>
+                <td>$originalLimit</td>
+                <td class="last">Limit of the query. It is stored because when caching the documents
+the DOCUMENT_LIMIT const will be used.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_ignoreCache">
+                                        protected                                        bool
+                </td>
+                <td>$ignoreCache</td>
+                <td class="last">Means that the CacheableCursor is wapping the original cursor and not
+reading from Cache anymore.</td>
                 <td></td>
             </tr>
             </table>
@@ -167,7 +205,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method___construct"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -177,7 +215,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                     <a href="#method_limit">limit</a>(int $amount)
         
                                             <p>Limits the number of results returned.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_limit"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -187,7 +225,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                     <a href="#method_sort">sort</a>(array $fields)
         
                                             <p>Sorts the results by given fields.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_sort"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -197,7 +235,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                     <a href="#method_skip">skip</a>(int $amount)
         
                                             <p>Skips a number of results.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_skip"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -207,7 +245,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                     <a href="#method_disableTimeout">disableTimeout</a>(bool $flag = true)
         
                                             <p>Disable idle timeout of 10 minutes from MongoDB cursor.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_disableTimeout"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -217,7 +255,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                     <a href="#method_count">count</a>()
         
                                             <p>Counts the number of results for this cursor.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_count"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -227,7 +265,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
                     <a href="#method_rewind">rewind</a>()
         
                                             <p>Iterator interface rewind (used in foreach).</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_rewind"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -238,7 +276,7 @@ limited (in that regard) than the old driver MongoCursor.</p>                   
         
                                             <p>Iterator interface current. Return a model object
 with cursor document. (used in foreach).</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_current"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -248,7 +286,7 @@ with cursor document. (used in foreach).</p>                </div>
                     <a href="#method_first">first</a>()
         
                                             <p>Returns the first element of the cursor.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_first"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -260,7 +298,7 @@ with cursor document. (used in foreach).</p>                </div>
                                             <p>Refresh the cursor in order to be able to perform a rewind and iterate
 through it again. A new request to the database will be made in the next
 iteration.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_fresh"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -270,7 +308,7 @@ iteration.</p>                </div>
                     <a href="#method_key">key</a>()
         
                                             <p>Iterator key method (used in foreach).</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_key"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -280,7 +318,7 @@ iteration.</p>                </div>
                     <a href="#method_next">next</a>()
         
                                             <p>Iterator next method (used in foreach).</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_next"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -290,7 +328,7 @@ iteration.</p>                </div>
                     <a href="#method_valid">valid</a>()
         
                                             <p>Iterator valid method (used in foreach).</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_valid"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -300,7 +338,7 @@ iteration.</p>                </div>
                     <a href="#method_all">all</a>()
         
                                             <p>Convert the cursor instance to an array of Objects.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_all"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -310,7 +348,7 @@ iteration.</p>                </div>
                     <a href="#method_toArray">toArray</a>()
         
                                             <p>Convert the cursor instance to a full associative array.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_toArray"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -330,7 +368,7 @@ iteration.</p>                </div>
                     <a href="#method_getAssembler">getAssembler</a>()
         
                                             <p>Retrieves an EntityAssembler instance.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_getAssembler"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -339,8 +377,8 @@ iteration.</p>                </div>
                 <div class="col-md-8 type">
                     <a href="#method_serialize">serialize</a>()
         
-                                            <p>Serializes this object storing the collection name instead of the actual
-MongoDb\Collection (which is unserializable).</p>                </div>
+                                            <p>Serializes this object. Drops the unserializable DriverCursor. In order
+to make the CacheableCursor object serializable.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -351,6 +389,47 @@ MongoDb\Collection (which is unserializable).</p>                </div>
                     <a href="#method_unserialize">unserialize</a>(mixed $serialized)
         
                                             <p>Unserializes this object. Re-creating the database connection.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Mongolid/Cursor/Cursor.html#method_unserialize"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_generateCacheKey">generateCacheKey</a>()
+        
+                                            <p>Generates an unique cache key for the cursor in it's current state.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_storeOriginalLimit">storeOriginalLimit</a>()
+        
+                                            <p>Stores the original "limit" clause of the query.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLimit">getLimit</a>()
+        
+                                            <p>Gets the limit clause of the query if any.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/Traversable">Traversable</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getOriginalCursor">getOriginalCursor</a>()
+        
+                                            <p>Returns the DriverCursor considering the documents that have already
+been retrieved from cache.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -361,7 +440,7 @@ MongoDb\Collection (which is unserializable).</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 78</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method___construct"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 78</div>
         <code>                    
     <strong>__construct</strong>(<a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a> $entitySchema, <abbr title="MongoDB\Collection">Collection</abbr> $collection, string $command, array $params)
         </code>
@@ -405,7 +484,7 @@ MongoDb\Collection (which is unserializable).</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_limit">
-        <div class="location">at         line 98</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_limit"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 98</div>
         <code>                    <a href="../../Mongolid/Cursor/CursorInterface.html"><abbr title="Mongolid\Cursor\CursorInterface">CursorInterface</abbr></a>
     <strong>limit</strong>(int $amount)
         </code>
@@ -445,7 +524,7 @@ MongoDb\Collection (which is unserializable).</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_sort">
-        <div class="location">at         line 114</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_sort"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 114</div>
         <code>                    <a href="../../Mongolid/Cursor/CursorInterface.html"><abbr title="Mongolid\Cursor\CursorInterface">CursorInterface</abbr></a>
     <strong>sort</strong>(array $fields)
         </code>
@@ -487,7 +566,7 @@ MongoDb\Collection (which is unserializable).</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_skip">
-        <div class="location">at         line 128</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_skip"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 128</div>
         <code>                    <a href="../../Mongolid/Cursor/CursorInterface.html"><abbr title="Mongolid\Cursor\CursorInterface">CursorInterface</abbr></a>
     <strong>skip</strong>(int $amount)
         </code>
@@ -527,7 +606,7 @@ MongoDb\Collection (which is unserializable).</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_disableTimeout">
-        <div class="location">at         line 143</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_disableTimeout"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 143</div>
         <code>                    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
     <strong>disableTimeout</strong>(bool $flag = true)
         </code>
@@ -567,7 +646,7 @@ MongoDb\Collection (which is unserializable).</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 155</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_count"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 155</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -597,7 +676,7 @@ MongoDb\Collection (which is unserializable).</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">at         line 163</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_rewind"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 163</div>
         <code>                    
     <strong>rewind</strong>()
         </code>
@@ -618,7 +697,7 @@ MongoDb\Collection (which is unserializable).</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">at         line 181</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_current"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 181</div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -649,7 +728,7 @@ with cursor document. (used in foreach).</p>                                    
             </div>
                     <div class="method-item">
                     <h3 id="method_first">
-        <div class="location">at         line 203</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_first"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 203</div>
         <code>                    mixed
     <strong>first</strong>()
         </code>
@@ -679,7 +758,7 @@ with cursor document. (used in foreach).</p>                                    
             </div>
                     <div class="method-item">
                     <h3 id="method_fresh">
-        <div class="location">at         line 220</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_fresh"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 220</div>
         <code>                    
     <strong>fresh</strong>()
         </code>
@@ -702,7 +781,7 @@ iteration.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">at         line 230</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_key"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 230</div>
         <code>                    int
     <strong>key</strong>()
         </code>
@@ -732,7 +811,7 @@ iteration.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 238</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_next"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 238</div>
         <code>                    
     <strong>next</strong>()
         </code>
@@ -753,7 +832,7 @@ iteration.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">at         line 249</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_valid"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 249</div>
         <code>                    bool
     <strong>valid</strong>()
         </code>
@@ -783,7 +862,7 @@ iteration.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_all">
-        <div class="location">at         line 259</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_all"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 259</div>
         <code>                    array
     <strong>all</strong>()
         </code>
@@ -813,7 +892,7 @@ iteration.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 273</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_toArray"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 273</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -843,7 +922,7 @@ iteration.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCursor">
-        <div class="location">at         line 289</div>
+        <div class="location">at         line 58</div>
         <code>            protected        <a target="_blank" href="http://php.net/Traversable">Traversable</a>
     <strong>getCursor</strong>()
         </code>
@@ -854,7 +933,11 @@ iteration.</p>                                                </div>
 
                     <div class="method-description">
                                     <p>Actually returns a Traversable object with the DriverCursor within.</p>                    <p>If it does not exists yet, create it using the $collection, $command and
-$params given.</p>                            </div>
+$params given.</p>
+
+<p>The difference between the CacheableCursor and the normal Cursor is that
+the Cacheable stores all the results within itself and drops the
+Driver Cursor in order to be serializable.</p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -874,7 +957,7 @@ $params given.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAssembler">
-        <div class="location">at         line 305</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_getAssembler"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 305</div>
         <code>            protected        <a href="../../Mongolid/DataMapper/EntityAssembler.html"><abbr title="Mongolid\DataMapper\EntityAssembler">EntityAssembler</abbr></a>
     <strong>getAssembler</strong>()
         </code>
@@ -904,7 +987,7 @@ $params given.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_serialize">
-        <div class="location">at         line 320</div>
+        <div class="location">at         line 172</div>
         <code>                    string
     <strong>serialize</strong>()
         </code>
@@ -914,8 +997,8 @@ $params given.</p>                            </div>
     
 
                     <div class="method-description">
-                                    <p>Serializes this object storing the collection name instead of the actual
-MongoDb\Collection (which is unserializable).</p>                                                </div>
+                                    <p>Serializes this object. Drops the unserializable DriverCursor. In order
+to make the CacheableCursor object serializable.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -935,7 +1018,7 @@ MongoDb\Collection (which is unserializable).</p>                               
             </div>
                     <div class="method-item">
                     <h3 id="method_unserialize">
-        <div class="location">at         line 333</div>
+        <div class="location">in <a href="../../Mongolid/Cursor/Cursor.html#method_unserialize"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a> at         line 333</div>
         <code>                    
     <strong>unserialize</strong>(mixed $serialized)
         </code>
@@ -958,6 +1041,118 @@ MongoDb\Collection (which is unserializable).</p>                               
             </table>
 
             
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generateCacheKey">
+        <div class="location">at         line 107</div>
+        <code>            protected        string
+    <strong>generateCacheKey</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generates an unique cache key for the cursor in it's current state.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>cache key to identify the query of the current cursor</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_storeOriginalLimit">
+        <div class="location">at         line 120</div>
+        <code>            protected        
+    <strong>storeOriginalLimit</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Stores the original "limit" clause of the query.</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLimit">
+        <div class="location">at         line 136</div>
+        <code>            protected        mixed
+    <strong>getLimit</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Gets the limit clause of the query if any.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>Int or null</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOriginalCursor">
+        <div class="location">at         line 147</div>
+        <code>            protected        <a target="_blank" href="http://php.net/Traversable">Traversable</a>
+    <strong>getOriginalCursor</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the DriverCursor considering the documents that have already
+been retrieved from cache.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/Traversable">Traversable</a></td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>

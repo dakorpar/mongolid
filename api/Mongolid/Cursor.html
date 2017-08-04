@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,9 +66,7 @@
                 <div class="namespace-breadcrumbs">
         <ol class="breadcrumb">
             <li><span class="label label-default">Namespace</span></li>
-                                                        <li><a href="../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../Mongolid/Cursor.html">Cursor</a></li>
-    
+                    <li><a href="../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../Mongolid/Cursor.html">Cursor</a></li><li class="backslash">\</li>
         </ol>
     </div>
             <div id="page-content">
@@ -80,28 +81,58 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
-                                    </div>
+                                            <a href="../Mongolid/Cursor/CacheableCursor.html"><abbr title="Mongolid\Cursor\CacheableCursor">CacheableCursor</abbr></a>
+                                            
+                </div>
                 <div class="col-md-6">
-                    This class wraps the query execution and the actuall creation of the driver
-cursor. By doing this we can, call 'sort', 'skip', 'limit' and others after
-calling 'where'. Because the mongodb library's MongoDB\Cursor is much more
-limited (in that regard) than the old driver MongoCursor.
+                    This class wraps the query execution and the actual creation of the driver
+cursor. But upon it's creation it will already retrieve documents from the
+database and store the retrieved documents. By doing this, it is possible
+to serialize the results and save for later use.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    This class wraps the query execution and the actual creation of the driver cursor.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Mongolid/Cursor/CursorFactory.html"><abbr title="Mongolid\Cursor\CursorFactory">CursorFactory</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Factory of new EmbeddedCursor instances.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../Mongolid/Cursor/EmbeddedCursor.html"><abbr title="Mongolid\Cursor\EmbeddedCursor">EmbeddedCursor</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
-                    This class wraps the query execution and the actuall creation of the driver
-cursor. By doing this we can, call 'sort', 'skip', 'limit' and others after
-calling 'where'. Because the mongodb library's MongoDB\Cursor is much more
-limited (in that regard) than the old driver MongoCursor.
+                    This class wraps the query execution and the actual creation of the driver cursor.
                 </div>
             </div>
             </div>
     
+            <h2>Interfaces</h2>
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Mongolid/Cursor/CursorInterface.html"><abbr title="Mongolid\Cursor\CursorInterface">CursorInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Common interface for all kinds of cursors.
+                </div>
+            </div>
+            </div>
     
     
             </div>

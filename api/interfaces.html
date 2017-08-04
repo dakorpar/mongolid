@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -69,11 +72,61 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a></em>
-                                    </div>
+                                            <em><a href="Mongolid/Cursor/CursorInterface.html"><abbr title="Mongolid\Cursor\CursorInterface">CursorInterface</abbr></a></em>
+                                            
+                </div>
                 <div class="col-md-6">
-                    An intrface that should be implemented and injected in order to have events
+                    Common interface for all kinds of cursors.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    An interface that should be implemented and injected in order to have events
 triggered from Mongolid.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Mongolid/Model/AttributesAccessInterface.html"><abbr title="Mongolid\Model\AttributesAccessInterface">AttributesAccessInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    This interface declares attribute getter, setters and also a useful
+<code>fill</code> method.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Mongolid/Model/PolymorphableInterface.html"><abbr title="Mongolid\Model\PolymorphableInterface">PolymorphableInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    If a model implements the PolymorphableInterface it means that, whenever the
+entity is being "recovered" from the database, it will call the polymorph
+method and retrieve the object returned from it.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Mongolid/Schema/HasSchemaInterface.html"><abbr title="Mongolid\Schema\HasSchemaInterface">HasSchemaInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Mongolid/Util/CacheComponentInterface.html"><abbr title="Mongolid\Util\CacheComponentInterface">CacheComponentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    CacheComponentInteface describes the API of an CacheComponent that may be
+used with Mongolid.
                 </div>
             </div>
             </div>

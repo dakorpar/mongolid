@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Mongolid\Util\SequenceService | Mongolid ODM Api</title>
+    <title>Mongolid\Exception\ModelNotFoundException | Mongolid ODM Api</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Mongolid_Util_SequenceService" data-root-path="../../">
+    <body id="class" data-name="class:Mongolid_Exception_ModelNotFoundException" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,29 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Util.html">Util</a></li><li class="backslash">\</li><li>SequenceService</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Exception.html">Exception</a></li><li class="backslash">\</li><li>ModelNotFoundException</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            SequenceService
+            ModelNotFoundException
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>SequenceService</strong>
+    <strong>ModelNotFoundException</strong>        extends <a target="_blank" href="http://php.net/RuntimeException">RuntimeException</a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Sequence service will manage and provide auto-increment sequences to be used
-by the models. It can be useful for objects which the _id must be an integer
-sequence.</p>                                </div>
+            <p>Model could not be found.</p>                                </div>
     
     
     
@@ -96,19 +94,19 @@ sequence.</p>                                </div>
 
             <table class="table table-condensed">
                     <tr>
-                <td class="type" id="property_collection">
+                <td class="type" id="property_message">
                                         protected                                        string
                 </td>
-                <td>$collection</td>
-                <td class="last">Sequences collection name on MongoDB. Default 'mongolid_sequences'.</td>
+                <td>$message</td>
+                <td class="last">Exception message.</td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_connPool">
-                                        protected                                        <a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a>
+                <td class="type" id="property_model">
+                                        protected                                        string
                 </td>
-                <td>$connPool</td>
-                <td class="last">Connections that are going to be used to interact with the database.</td>
+                <td>$model</td>
+                <td class="last">Name of the affected Mongolid model.</td>
                 <td></td>
             </tr>
             </table>
@@ -119,33 +117,22 @@ sequence.</p>                                </div>
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <abbr title="Mongolid\Exception\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a> $connPool, string $collection = &#039;mongolid_sequences&#039;)
+                    <a href="#method_setModel">setModel</a>(string $model)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Set the affected Mongolid model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getNextValue">getNextValue</a>(string $sequenceName)
+                    <a href="#method_getModel">getModel</a>()
         
-                                            <p>Get next value for the sequence.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="MongoDB\Collection">Collection</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_rawCollection">rawCollection</a>()
-        
-                                            <p>Get the actual MongoDB Collection object.</p>                </div>
+                                            <p>Get the affected Mongolid model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -155,44 +142,10 @@ sequence.</p>                                </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
+                    <h3 id="method_setModel">
         <div class="location">at         line 33</div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a> $connPool, string $collection = &#039;mongolid_sequences&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a></td>
-                <td>$connPool</td>
-                <td>the connections that are going to be used to interact with the database</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$collection</td>
-                <td>the collection where the sequences will be stored</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getNextValue">
-        <div class="location">at         line 46</div>
-        <code>                    int
-    <strong>getNextValue</strong>(string $sequenceName)
+        <code>                    <abbr title="Mongolid\Exception\$this">$this</abbr>
+    <strong>setModel</strong>(string $model)
         </code>
     </h3>
     <div class="details">
@@ -200,15 +153,15 @@ sequence.</p>                                </div>
     
 
                     <div class="method-description">
-                                    <p>Get next value for the sequence.</p>                                                </div>
+                                    <p>Set the affected Mongolid model.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$sequenceName</td>
-                <td>sequence identifier string</td>
+                <td>$model</td>
+                <td>name of the model</td>
             </tr>
             </table>
 
@@ -217,7 +170,7 @@ sequence.</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td><abbr title="Mongolid\Exception\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -229,10 +182,10 @@ sequence.</p>                                </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_rawCollection">
-        <div class="location">at         line 66</div>
-        <code>            protected        <abbr title="MongoDB\Collection">Collection</abbr>
-    <strong>rawCollection</strong>()
+                    <h3 id="method_getModel">
+        <div class="location">at         line 47</div>
+        <code>                    string
+    <strong>getModel</strong>()
         </code>
     </h3>
     <div class="details">
@@ -240,14 +193,14 @@ sequence.</p>                                </div>
     
 
                     <div class="method-description">
-                                    <p>Get the actual MongoDB Collection object.</p>                                                </div>
+                                    <p>Get the affected Mongolid model.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="MongoDB\Collection">Collection</abbr></td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>

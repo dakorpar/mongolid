@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Mongolid\Connection\Connection | Mongolid ODM Api</title>
+    <title>Mongolid\Schema\Schema | Mongolid ODM Api</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Mongolid_Connection_Connection" data-root-path="../../">
+    <body id="class" data-name="class:Mongolid_Schema_Schema" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,27 +66,28 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Connection.html">Connection</a></li><li class="backslash">\</li><li>Connection</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Schema.html">Schema</a></li><li class="backslash">\</li><li>Schema</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Connection
+            Schema
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>Connection</strong>
+    <strong>Schema</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Represents a single connection with the database.</p>                                </div>
+            <p>A schema maps to a MongoDB collection and defines the shape of the documents
+within that collection.</p>                                </div>
     
     
     
@@ -94,19 +95,42 @@
 
             <table class="table table-condensed">
                     <tr>
-                <td class="type" id="property_rawConnection">
-                                        protected                                        <abbr title="MongoDB\Client">Client</abbr>
+                <td class="type" id="property_dynamic">
+                                                                                bool
                 </td>
-                <td>$rawConnection</td>
-                <td class="last">The raw MongoDB\Client object that represents this connection.</td>
+                <td>$dynamic</td>
+                <td class="last">The $dynamic property tells if the schema will accept additional fields
+that are not specified in the $fields property. This is useful if you
+does not have a strict document format or if you want to take full
+advantage of the "schemaless" nature of MongoDB.</td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_defaultDatabase">
+                <td class="type" id="property_collection">
                                                                                 string
                 </td>
-                <td>$defaultDatabase</td>
-                <td class="last">The default database where mongolid will store the documents.</td>
+                <td>$collection</td>
+                <td class="last">Name of the collection where this kind of document is going to be saved
+or retrieved from.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fields">
+                                                                                string[]
+                </td>
+                <td>$fields</td>
+                <td class="last">Tells how a document should look like. If an scalar type is used, it will
+perform a cast into the value. Otherwise the schema will use the type as
+the name of the method to be called. See 'objectId' method for example.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_entityClass">
+                                                                                string
+                </td>
+                <td>$entityClass</td>
+                <td class="last">Name of the class that will be used to represent a document of this
+Schema when retrieve from the database.</td>
                 <td></td>
             </tr>
             </table>
@@ -117,43 +141,45 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr>|mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $server = &#039;mongodb://localhost:27017&#039;, array $options = [&#039;connect&#039; =&gt; true], array $driverOptions = [])
+                    <a href="#method_objectId">objectId</a>(mixed $value = null)
         
-                                            <p>Constructs a new Mongolid connection. It uses the same constructor
-parameters as the original MongoDB\Client constructor.</p>                </div>
+                                            <p>Filters any field in the $fields that has it's value specified as a
+'objectId'. It will wraps the $value, if any, into a ObjectID object.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_findDefaultDatabase">findDefaultDatabase</a>(string $connectionString)
+                    <a href="#method_sequence">sequence</a>(int $value = null)
         
-                                            <p>Find and stores the default database in the connection string.</p>                </div>
+                                            <p>Prepares the field to have a sequence. If $value is zero or not defined
+a new auto-increment number will be "generated" for the collection of
+the schema. The sequence generation is done by the SequenceService.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="MongoDB\Client">Client</abbr>
+                    <abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getRawConnection">getRawConnection</a>()
+                    <a href="#method_createdAtTimestamp">createdAtTimestamp</a>(mixed|null $value)
         
-                                            <p>Getter for Client instance.</p>                </div>
+                                            <p>Prepares the field to be the datetime that the document has been created.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="MongoDB\Driver\Manager">Manager</abbr>
+                    <abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getRawManager">getRawManager</a>()
+                    <a href="#method_updatedAtTimestamp">updatedAtTimestamp</a>()
         
-                                            <p>Getter for Manager instance.</p>                </div>
+                                            <p>Prepares the field to be now.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -163,10 +189,10 @@ parameters as the original MongoDB\Client constructor.</p>                </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at         line 37</div>
-        <code>                    
-    <strong>__construct</strong>(string $server = &#039;mongodb://localhost:27017&#039;, array $options = [&#039;connect&#039; =&gt; true], array $driverOptions = [])
+                    <h3 id="method_objectId">
+        <div class="location">at         line 67</div>
+        <code>                    <abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr>|mixed
+    <strong>objectId</strong>(mixed $value = null)
         </code>
     </h3>
     <div class="details">
@@ -174,96 +200,25 @@ parameters as the original MongoDB\Client constructor.</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>Constructs a new Mongolid connection. It uses the same constructor
-parameters as the original MongoDB\Client constructor.</p>                                                </div>
+                                    <p>Filters any field in the $fields that has it's value specified as a
+'objectId'. It will wraps the $value, if any, into a ObjectID object.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$server</td>
-                <td>the specified connection string</td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td>the mongodb client options</td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$driverOptions</td>
-                <td>the mongodb driver options when opening a connection</td>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>value that may be converted to ObjectID</td>
             </tr>
             </table>
 
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>http://php.net/manual/en/mongodb-driver-manager.construct.php</td>
-                <td></td>
-            </tr>
-            </table>
-
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_findDefaultDatabase">
-        <div class="location">at         line 55</div>
-        <code>            protected        
-    <strong>findDefaultDatabase</strong>(string $connectionString)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Find and stores the default database in the connection string.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$connectionString</td>
-                <td>mongoDB connection string</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getRawConnection">
-        <div class="location">at         line 69</div>
-        <code>                    <abbr title="MongoDB\Client">Client</abbr>
-    <strong>getRawConnection</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Getter for Client instance.</p>                                                </div>
-                <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="MongoDB\Client">Client</abbr></td>
+            <td><abbr title="MongoDB\BSON\ObjectID">ObjectID</abbr>|mixed</td>
             <td></td>
         </tr>
     </table>
@@ -275,10 +230,10 @@ parameters as the original MongoDB\Client constructor.</p>                      
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getRawManager">
-        <div class="location">at         line 79</div>
-        <code>                    <abbr title="MongoDB\Driver\Manager">Manager</abbr>
-    <strong>getRawManager</strong>()
+                    <h3 id="method_sequence">
+        <div class="location">at         line 89</div>
+        <code>                    int
+    <strong>sequence</strong>(int $value = null)
         </code>
     </h3>
     <div class="details">
@@ -286,14 +241,96 @@ parameters as the original MongoDB\Client constructor.</p>                      
     
 
                     <div class="method-description">
-                                    <p>Getter for Manager instance.</p>                                                </div>
+                                    <p>Prepares the field to have a sequence. If $value is zero or not defined
+a new auto-increment number will be "generated" for the collection of
+the schema. The sequence generation is done by the SequenceService.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$value</td>
+                <td>value that will be evaluated</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createdAtTimestamp">
+        <div class="location">at         line 106</div>
+        <code>                    <abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr>
+    <strong>createdAtTimestamp</strong>(mixed|null $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Prepares the field to be the datetime that the document has been created.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed|null</td>
+                <td>$value</td>
+                <td>value that will be evaluated</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updatedAtTimestamp">
+        <div class="location">at         line 120</div>
+        <code>                    <abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr>
+    <strong>updatedAtTimestamp</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Prepares the field to be now.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="MongoDB\Driver\Manager">Manager</abbr></td>
+            <td><abbr title="MongoDB\BSON\UTCDateTime">UTCDateTime</abbr></td>
             <td></td>
         </tr>
     </table>

@@ -7,19 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
-  <title>DataMapper Pattern - Mongolid ODM</title>
-  
-
   <link rel="shortcut icon" href="../img/favicon.ico">
-
-  
+  <title>DataMapper Pattern - Mongolid ODM</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
-
   
   <script>
     // Current page data
@@ -30,9 +24,7 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script> 
-
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
   
 </head>
 
@@ -52,83 +44,77 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
+	<ul class="current">
+	  
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="..">Home</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../basics/">Basics</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../basics/">Basics</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../relationships/">Relationships</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../relationships/">Relationships</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">DataMapper Pattern</a>
-        
-            <ul>
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">DataMapper Pattern</a>
+    <ul class="subnav">
             
-                <li class="toctree-l3"><a href="#introduction">Introduction</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#basics">Basics</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#interacting-with-the-database">Interacting with the database</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#schema-definition">Schema definition</a></li>
-                
-                    <li><a class="toctree-l4" href="#default-schema-field-types">Default Schema $field types</a></li>
-                
-                    <li><a class="toctree-l4" href="#schema-definition-for-embeded-documents">Schema definition for embeded documents</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#entity-helpers">Entity helpers</a></li>
-                
-                    <li><a class="toctree-l4" href="#attribute-trait">Attribute trait</a></li>
-                
-                    <li><a class="toctree-l4" href="#relations-trait">Relations trait</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l2"><a href="#introduction">Introduction</a></li>
+    
+
+    <li class="toctree-l2"><a href="#basics">Basics</a></li>
+    
+
+    <li class="toctree-l2"><a href="#interacting-with-the-database">Interacting with the database</a></li>
+    
+
+    <li class="toctree-l2"><a href="#schema-definition">Schema definition</a></li>
+    
+        <ul>
         
-    </li>
-<li>
+            <li><a class="toctree-l3" href="#default-schema-field-types">Default Schema $field types</a></li>
+        
+            <li><a class="toctree-l3" href="#schema-definition-for-embeded-documents">Schema definition for embeded documents</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#entity-helpers">Entity helpers</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#attribute-trait">Attribute trait</a></li>
+        
+            <li><a class="toctree-l3" href="#relations-trait">Relations trait</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../api-docs/">API Documentation</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../api-docs/">API Documentation</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../troubleshooting/">Troubleshooting</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../info/">Additional information</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../info/">Additional information</a>
+	    </li>
           
         </ul>
       </div>
@@ -155,9 +141,8 @@
     <li>DataMapper Pattern</li>
     <li class="wy-breadcrumbs-aside">
       
-        
-          <a href="https://github.com/leroy-merlin-br/mongolid" class="icon icon-github"> Edit on GitHub</a>
-        
+        <a href="https://github.com/leroy-merlin-br/mongolid/edit/master/docs/datamapper.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
     </li>
   </ul>
@@ -176,10 +161,10 @@
 <blockquote>
 <p><strong>Note:</strong> The <em>Mongolid Schema</em> is equivalent to <a href="http://doctrine-orm.readthedocs.org/projects/doctrine-orm/en/latest/reference/xml-mapping.html">mapping your objects using annotation or xml</a> in other ORM or ODM libraries.</p>
 </blockquote>
-<p>In order to define a schema you should extend <code>Mongolid\Schema</code> or <code>Mongolid\DynamicSchema</code>:</p>
+<p>In order to define a schema you should extend <code>Mongolid\Schema\Schema</code> or <code>Mongolid\Schema\DynamicSchema</code>:</p>
 <pre><code class="php">&lt;?php
 
-class ArticleSchema extends Mongolid\Schema {
+class ArticleSchema extends Mongolid\Schema\Schema {
 
     public $entityClass = 'Article';
 
@@ -217,7 +202,7 @@ class ArticleSchema extends Mongolid\Schema {
 </code></pre>
 
 <h2 id="interacting-with-the-database">Interacting with the database<a class="headerlink" href="#interacting-with-the-database" title="Permanent link">&para;</a></h2>
-<p>Interact with the database using the <code>DataMapper</code> retrieved trought the Mongolid Manager:</p>
+<p>Interact with the database using the <code>DataMapper</code> retrieved through the Mongolid Manager:</p>
 <pre><code class="php">$article = $manager-&gt;getMapper(Article::class)
     -&gt;where(['title' =&gt; 'Foobar'])-&gt;first();
 
@@ -230,7 +215,7 @@ $manager-&gt;getMapper(Article::class)-&gt;save($article); // true
 </code></pre>
 
 <h2 id="schema-definition">Schema definition<a class="headerlink" href="#schema-definition" title="Permanent link">&para;</a></h2>
-<p>When defining your schema you can eighter extend the <code>Mongolid\Schema</code> or <code>Mongolid\DynamicSchema</code>. The main difference is the <code>$dynamic</code> property value.</p>
+<p>When defining your schema you can eighter extend the <code>Mongolid\Schema\Schema</code> or <code>Mongolid\Schema\DynamicSchema</code>. The main difference is the <code>$dynamic</code> property value.</p>
 <p><strong>Making a schema dynamic</strong></p>
 <p>The <code>$dynamic</code> property is a <code>boolean</code> that tells if the schema will accept additional fields that are not specified in the $fields property. This is usefull if you doesn&rsquo;t have a strict document format or if you want to take full advantage of the &ldquo;schemaless&rdquo; nature of MongoDB.</p>
 <p><strong>Defining the collection and the Domain Entity to be mapped</strong></p>
@@ -238,11 +223,11 @@ $manager-&gt;getMapper(Article::class)-&gt;save($article); // true
 <p><strong>Defining the fields</strong></p>
 <p>The <code>$fields</code> property is an array that tells how a document should look like. For each field of the document you can specify a type or how it will be &ldquo;formated&rdquo;.</p>
 <p>If an scalar type is used, it will perform a cast operation in the value. Othewise the schema will use the type as the name of the method to be called.</p>
-<p>See <code>Mongolid\Schema::objectId</code> method for example. It means that if a field type (in <code>$fields</code>) is defined as <code>"objectId"</code>, it will pass trought the <code>Mongolid\Schema::objectId</code> before being saved in the database.</p>
+<p>See <code>Mongolid\Schema\Schema::objectId</code> method for example. It means that if a field type (in <code>$fields</code>) is defined as <code>"objectId"</code>, it will pass trought the <code>Mongolid\Schema\Schema::objectId</code> before being saved in the database.</p>
 <p>Because of this you can create your own custom field types easily. Just create a new public method in your schema and you are ready to use it&rsquo;s name as a type definition in <code>$fields</code>.</p>
 <p>The last option is to define a field as another schema by using the syntax <em>&lsquo;schema.&lt;Class&gt;&lsquo;</em> This represents one or more embedded documents that will be formated using another <em>Schema</em> class.</p>
 <h3 id="default-schema-field-types">Default Schema $field types<a class="headerlink" href="#default-schema-field-types" title="Permanent link">&para;</a></h3>
-<p>By default the <code>Mongolid\Schema</code> contains the following types:</p>
+<p>By default the <code>Mongolid\Schema\Schema</code> contains the following types:</p>
 <table>
 <thead>
 <tr>
@@ -278,7 +263,7 @@ $manager-&gt;getMapper(Article::class)-&gt;save($article); // true
 </tbody>
 </table>
 <p>But you can easily create your own types. For example:</p>
-<pre><code class="php">class MySchema extends Mongolid\Schema
+<pre><code class="php">class MySchema extends Mongolid\Schema\Schema
 {
     ...
 
@@ -295,7 +280,7 @@ $manager-&gt;getMapper(Article::class)-&gt;save($article); // true
 
 <h3 id="schema-definition-for-embeded-documents">Schema definition for embeded documents<a class="headerlink" href="#schema-definition-for-embeded-documents" title="Permanent link">&para;</a></h3>
 <p>By using the <code>"schema.&lt;Class&gt;"</code> syntax you can create schemas and map Entities for embeded documents. For example, with the definition below:</p>
-<pre><code class="php">class PostSchema extends Mongolid\Schema
+<pre><code class="php">class PostSchema extends Mongolid\Schema\Schema
 {
     public $entityClass = 'Post';
     public $collection = 'posts';
@@ -308,7 +293,7 @@ $manager-&gt;getMapper(Article::class)-&gt;save($article); // true
     ];
 }
 
-class CommentSchema extends Mongolid\Schema
+class CommentSchema extends Mongolid\Schema\Schema
 {
     public $entityClass = 'Comment';
     public $collection = null; // Optional since all comments will be embedded
@@ -402,13 +387,13 @@ $post-&gt;comments()-&gt;sort(['author' =&gt; 1])-&gt;first()-&gt;name // Alan T
       </div>
 
     </section>
-
+    
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/leroy-merlin-br/mongolid" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/leroy-merlin-br/mongolid" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../relationships/" style="color: #fcfcfc;">&laquo; Previous</a></span>
@@ -418,6 +403,7 @@ $post-&gt;comments()-&gt;sort(['author' =&gt; 1])-&gt;first()-&gt;name // Alan T
       
     </span>
 </div>
+    <script src="../js/theme.js"></script>
 
 </body>
 </html>

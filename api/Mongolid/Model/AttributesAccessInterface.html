@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Mongolid\DataMapper\EntityAssembler | Mongolid ODM Api</title>
+    <title>Mongolid\Model\AttributesAccessInterface | Mongolid ODM Api</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Mongolid_DataMapper_EntityAssembler" data-root-path="../../">
+    <body id="class" data-name="class:Mongolid_Model_AttributesAccessInterface" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,32 +65,29 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/DataMapper.html">DataMapper</a></li><li class="backslash">\</li><li>EntityAssembler</li>
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Model.html">Model</a></li><li class="backslash">\</li><li>AttributesAccessInterface</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            EntityAssembler
+            AttributesAccessInterface
                 
         </h1>
     </div>
 
-    <p>    class
-    <strong>EntityAssembler</strong>
+    <p>    interface
+    <strong>AttributesAccessInterface</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>EntityAssembler have the responsibility of assembling the data coming from
-the database into actual entities. Since the entities need to be assembled
-whenever they are being built with data from the database, from a cursor or
-from an embedded field, this service is a reusable tool to turn field array of
-attributes into the actual Entity.</p>            <p>This class is meant to do the opposite of the SchemaMapper.</p>                    </div>
+            <p>This interface declares attribute getter, setters and also a useful
+<code>fill</code> method.</p>            <p>It is supposed to be used in conjunction with Attributes trait</p>                    </div>
     
     
     
@@ -103,9 +100,9 @@ attributes into the actual Entity.</p>            <p>This class is meant to do t
                     mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_assemble">assemble</a>(array|object $document, <a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a> $schema)
+                    <a href="#method_getAttribute">getAttribute</a>(string $key)
         
-                                            <p>Builds an object from the provided data.</p>                </div>
+                                            <p>Get an attribute from the model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -113,29 +110,50 @@ attributes into the actual Entity.</p>            <p>This class is meant to do t
                     mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_morphingTime">morphingTime</a>(mixed $entity)
+                    <a href="#method_getAttributes">getAttributes</a>()
         
-                                            <p>Returns the return of polymorph method of the given entity if available.</p>                </div>
+                                            <p>Get all attributes from the model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_prepareOriginalAttributes">prepareOriginalAttributes</a>(mixed $entity)
+                    <a href="#method_fill">fill</a>(array $input, bool $force = false)
         
-                                            <p>Stores original attributes from Entity if needed.</p>                </div>
+                                            <p>Set the model attributes using an array.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_assembleDocumentsRecursively">assembleDocumentsRecursively</a>(mixed $value, string $schemaClass)
+                    <a href="#method_cleanAttribute">cleanAttribute</a>(string $key)
         
-                                            <p>Assembly multiple documents for the given $schemaClass recursively.</p>                </div>
+                                            <p>Set a given attribute on the model.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setAttribute">setAttribute</a>(string $key, mixed $value)
+        
+                                            <p>Set a given attribute on the model.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_syncOriginalAttributes">syncOriginalAttributes</a>()
+        
+                                            <p>Stores original attributes from actual data from attributes
+to be used in future comparisons about changes.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -145,10 +163,10 @@ attributes into the actual Entity.</p>            <p>This class is meant to do t
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_assemble">
-        <div class="location">at         line 31</div>
+                    <h3 id="method_getAttribute">
+        <div class="location">at         line 22</div>
         <code>                    mixed
-    <strong>assemble</strong>(array|object $document, <a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a> $schema)
+    <strong>getAttribute</strong>(string $key)
         </code>
     </h3>
     <div class="details">
@@ -156,20 +174,15 @@ attributes into the actual Entity.</p>            <p>This class is meant to do t
     
 
                     <div class="method-description">
-                                    <p>Builds an object from the provided data.</p>                                                </div>
+                                    <p>Get an attribute from the model.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|object</td>
-                <td>$document</td>
-                <td>the attributes that will be used to compose the entity</td>
-            </tr>
-                    <tr>
-                <td><a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a></td>
-                <td>$schema</td>
-                <td>schema that will be used to map each field</td>
+                <td>string</td>
+                <td>$key</td>
+                <td>the attribute to be accessed</td>
             </tr>
             </table>
 
@@ -190,10 +203,10 @@ attributes into the actual Entity.</p>            <p>This class is meant to do t
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_morphingTime">
-        <div class="location">at         line 61</div>
-        <code>            protected        mixed
-    <strong>morphingTime</strong>(mixed $entity)
+                    <h3 id="method_getAttributes">
+        <div class="location">at         line 29</div>
+        <code>                    mixed
+    <strong>getAttributes</strong>()
         </code>
     </h3>
     <div class="details">
@@ -201,78 +214,15 @@ attributes into the actual Entity.</p>            <p>This class is meant to do t
     
 
                     <div class="method-description">
-                                    <p>Returns the return of polymorph method of the given entity if available.</p>                                                </div>
+                                    <p>Get all attributes from the model.</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$entity</td>
-                <td>the entity that may or may not have a polymorph method</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td>the result of $entity->polymorph or the $entity itself</td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>\Mongolid\Model\PolymorphableInterface::polymorph</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>https://i.ytimg.com/vi/TFGN9kAjdis/maxresdefault.jpg</td>
-                <td></td>
-            </tr>
-            </table>
-
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_prepareOriginalAttributes">
-        <div class="location">at         line 77</div>
-        <code>            protected        mixed
-    <strong>prepareOriginalAttributes</strong>(mixed $entity)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Stores original attributes from Entity if needed.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$entity</td>
-                <td>the entity that may have the attributes stored</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td>the entity with original attributes</td>
+            <td></td>
         </tr>
     </table>
 
@@ -283,10 +233,10 @@ attributes into the actual Entity.</p>            <p>This class is meant to do t
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_assembleDocumentsRecursively">
-        <div class="location">at         line 94</div>
-        <code>            protected        mixed
-    <strong>assembleDocumentsRecursively</strong>(mixed $value, string $schemaClass)
+                    <h3 id="method_fill">
+        <div class="location">at         line 37</div>
+        <code>                    
+    <strong>fill</strong>(array $input, bool $force = false)
         </code>
     </h3>
     <div class="details">
@@ -294,33 +244,114 @@ attributes into the actual Entity.</p>            <p>This class is meant to do t
     
 
                     <div class="method-description">
-                                    <p>Assembly multiple documents for the given $schemaClass recursively.</p>                                                </div>
+                                    <p>Set the model attributes using an array.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$input</td>
+                <td>the data that will be used to fill the attributes</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td>force fill</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_cleanAttribute">
+        <div class="location">at         line 44</div>
+        <code>                    
+    <strong>cleanAttribute</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set a given attribute on the model.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td>name of the attribute to be unset</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setAttribute">
+        <div class="location">at         line 52</div>
+        <code>                    
+    <strong>setAttribute</strong>(string $key, mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set a given attribute on the model.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td>name of the attribute to be set</td>
+            </tr>
                     <tr>
                 <td>mixed</td>
                 <td>$value</td>
-                <td>a value of an embeded field containing entity data to be assembled</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$schemaClass</td>
-                <td>the schemaClass to be used when assembling the entities within $value</td>
+                <td>value to be set</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
+            
+            
+                    </div>
+    </div>
 
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td></td>
-        </tr>
-    </table>
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_syncOriginalAttributes">
+        <div class="location">at         line 61</div>
+        <code>                    
+    <strong>syncOriginalAttributes</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
 
+                    <div class="method-description">
+                                    <p>Stores original attributes from actual data from attributes
+to be used in future comparisons about changes.</p>                    <p>Ideally should be called once right after retrieving data from
+the database.</p>                            </div>
+                <div class="tags">
+            
             
             
                     </div>

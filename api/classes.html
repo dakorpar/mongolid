@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -70,7 +73,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/ActiveRecord.html"><abbr title="Mongolid\ActiveRecord">ActiveRecord</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     The Mongolid\ActiveRecord base class will ensure to enable your entity to
 have methods to interact with the database. It means that 'save', 'insert',
@@ -80,15 +84,17 @@ have methods to interact with the database. It means that 'save', 'insert',
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/Connection/Connection.html"><abbr title="Mongolid\Connection\Connection">Connection</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
-                    Represents a single connection with the database
+                    Represents a single connection with the database.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Holds one or more connections and retrieve then as needed. It contains a
 cache of connections maintained so that the connections can be reused when
@@ -98,7 +104,8 @@ future requests to the database are required.
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/Container/Ioc.html"><abbr title="Mongolid\Container\Ioc">Ioc</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     This class is a simple Facade for a Illuminate\Container\Container
 in order to use the Container as IOC at all classes.
@@ -106,30 +113,67 @@ in order to use the Container as IOC at all classes.
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
-                                    </div>
+                                            <a href="Mongolid/Cursor/CacheableCursor.html"><abbr title="Mongolid\Cursor\CacheableCursor">CacheableCursor</abbr></a>
+                                            
+                </div>
                 <div class="col-md-6">
-                    This class wraps the query execution and the actuall creation of the driver
-cursor. By doing this we can, call 'sort', 'skip', 'limit' and others after
-calling 'where'. Because the mongodb library's MongoDB\Cursor is much more
-limited (in that regard) than the old driver MongoCursor.
+                    This class wraps the query execution and the actual creation of the driver
+cursor. But upon it's creation it will already retrieve documents from the
+database and store the retrieved documents. By doing this, it is possible
+to serialize the results and save for later use.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    This class wraps the query execution and the actual creation of the driver cursor.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="Mongolid/Cursor/CursorFactory.html"><abbr title="Mongolid\Cursor\CursorFactory">CursorFactory</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Factory of new EmbeddedCursor instances.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Mongolid/Cursor/CursorInterface.html"><abbr title="Mongolid\Cursor\CursorInterface">CursorInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Common interface for all kinds of cursors.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/Cursor/EmbeddedCursor.html"><abbr title="Mongolid\Cursor\EmbeddedCursor">EmbeddedCursor</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
-                    This class wraps the query execution and the actuall creation of the driver
-cursor. By doing this we can, call 'sort', 'skip', 'limit' and others after
-calling 'where'. Because the mongodb library's MongoDB\Cursor is much more
-limited (in that regard) than the old driver MongoCursor.
+                    This class wraps the query execution and the actual creation of the driver cursor.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="Mongolid/DataMapper/BulkWrite.html"><abbr title="Mongolid\DataMapper\BulkWrite">BulkWrite</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    This class is meant to provide a better API for handling
+with bulk operations.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/DataMapper/DataMapper.html"><abbr title="Mongolid\DataMapper\DataMapper">DataMapper</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     The DataMapper class will abstract how an Entity is persisted and retrieved
 from the database.
@@ -138,54 +182,67 @@ from the database.
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/DataMapper/EntityAssembler.html"><abbr title="Mongolid\DataMapper\EntityAssembler">EntityAssembler</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
-                    EntityAssembler have the responsability of assembling the data coming from
+                    EntityAssembler have the responsibility of assembling the data coming from
 the database into actual entities. Since the entities need to be assembled
 whenever they are being built with data from the database, from a cursor or
-from an embeded field, this service is a reusable tool to turn field array of
+from an embedded field, this service is a reusable tool to turn field array of
 attributes into the actual Entity.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/DataMapper/SchemaMapper.html"><abbr title="Mongolid\DataMapper\SchemaMapper">SchemaMapper</abbr></a>
-                                    </div>
-                <div class="col-md-6">
-                    The SchemaMapper will map an object or an array of data to an Schema object.
+                                            
                 </div>
-            </div>
-                    <div class="row">
                 <div class="col-md-6">
-                                            <a href="Mongolid/DynamicSchema.html"><abbr title="Mongolid\DynamicSchema">DynamicSchema</abbr></a>
-                                    </div>
-                <div class="col-md-6">
-                    The DynamicSchema will accept additional fields that are not specified in
-the $schema property. This is usefull if you doesn't have a clear idea of how
-the document will look like
+                    The SchemaMapper will map an object or an array of data to a Schema object.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <em><a href="Mongolid/Event/EventTriggerInterface.html"><abbr title="Mongolid\Event\EventTriggerInterface">EventTriggerInterface</abbr></a></em>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
-                    An intrface that should be implemented and injected in order to have events
+                    An interface that should be implemented and injected in order to have events
 triggered from Mongolid.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/Event/EventTriggerService.html"><abbr title="Mongolid\Event\EventTriggerService">EventTriggerService</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Provides the service of event firing.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <a href="Mongolid/Exception/ModelNotFoundException.html"><abbr title="Mongolid\Exception\ModelNotFoundException">ModelNotFoundException</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Model could not be found.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="Mongolid/Exception/NoCollectionNameException.html"><abbr title="Mongolid\Exception\NoCollectionNameException">NoCollectionNameException</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Class NoCollectionNameException.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <a href="Mongolid/Manager.html"><abbr title="Mongolid\Manager">Manager</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Wraps the Mongolid initialization. The main purpose of the Manager is to make
 it easy to use without any framework.
@@ -194,9 +251,10 @@ it easy to use without any framework.
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="Mongolid/Model/Attributes.html"><abbr title="Mongolid\Model\Attributes">Attributes</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
-                    This trait adds attribute getter, setters and also a usefull
+                    This trait adds attribute getter, setters and also a useful
 <code>fill</code> method that can be used with $fillable and $guarded
 properties to make sure that only the correct attributes
 will be set.
@@ -204,24 +262,68 @@ will be set.
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="Mongolid/Model/AttributesAccessInterface.html"><abbr title="Mongolid\Model\AttributesAccessInterface">AttributesAccessInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    This interface declares attribute getter, setters and also a useful
+<code>fill</code> method.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <a href="Mongolid/Model/DocumentEmbedder.html"><abbr title="Mongolid\Model\DocumentEmbedder">DocumentEmbedder</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Document embeder is a service that will embed documents within each other.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Mongolid/Model/Relations.html"><abbr title="Mongolid\Model\Relations">Relations</abbr></a>
-                                    </div>
+                                            <em><a href="Mongolid/Model/PolymorphableInterface.html"><abbr title="Mongolid\Model\PolymorphableInterface">PolymorphableInterface</abbr></a></em>
+                                            
+                </div>
                 <div class="col-md-6">
-                    It is supossed to be used in model classes in general
+                    If a model implements the PolymorphableInterface it means that, whenever the
+entity is being "recovered" from the database, it will call the polymorph
+method and retrieve the object returned from it.
                 </div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="Mongolid/Schema.html"><abbr title="Mongolid\Schema">Schema</abbr></a>
-                                    </div>
+                                            <a href="Mongolid/Model/Relations.html"><abbr title="Mongolid\Model\Relations">Relations</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    It is supposed to be used in model classes in general.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="Mongolid/Schema/DynamicSchema.html"><abbr title="Mongolid\Schema\DynamicSchema">DynamicSchema</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    The DynamicSchema will accept additional fields that are not specified in
+the $schema property. This is useful if you does not have a clear idea
+of how the document will look like.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Mongolid/Schema/HasSchemaInterface.html"><abbr title="Mongolid\Schema\HasSchemaInterface">HasSchemaInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a>
+                                            
+                </div>
                 <div class="col-md-6">
                     A schema maps to a MongoDB collection and defines the shape of the documents
 within that collection.
@@ -229,8 +331,49 @@ within that collection.
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <a href="Mongolid/Util/CacheComponent.html"><abbr title="Mongolid\Util\CacheComponent">CacheComponent</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    CacheComponent will cache values for later use based in "key, value"
+approach.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Mongolid/Util/CacheComponentInterface.html"><abbr title="Mongolid\Util\CacheComponentInterface">CacheComponentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    CacheComponentInteface describes the API of an CacheComponent that may be
+used with Mongolid.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="Mongolid/Util/LocalDateTime.html"><abbr title="Mongolid\Util\LocalDateTime">LocalDateTime</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    This class is responsible for converting UTCDateTime from MongoDB driver in
+local date time.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="Mongolid/Util/ObjectIdUtils.html"><abbr title="Mongolid\Util\ObjectIdUtils">ObjectIdUtils</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    An utility class (aka helper class) related to MongoDB's ObjectId. An
+"structure" that has only static methods and encapsulates no state.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <a href="Mongolid/Util/SequenceService.html"><abbr title="Mongolid\Util\SequenceService">SequenceService</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Sequence service will manage and provide auto-increment sequences to be used
 by the models. It can be useful for objects which the _id must be an integer

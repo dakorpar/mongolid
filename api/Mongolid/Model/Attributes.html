@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,141 +66,215 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">trait</span></li>
-                                                            <li><a href="../../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../../Mongolid/Model.html">Model</a></li>
-    
-                <li>Attributes</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Model.html">Model</a></li><li class="backslash">\</li><li>Attributes</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>Attributes</h1>
+        <h1>
+            Attributes
+                
+        </h1>
     </div>
 
     <p>    trait
     <strong>Attributes</strong>
 </p>
 
+        
+    
+
             <div class="description">
-            <p>This trait adds attribute getter, setters and also a usefull
+            <p>This trait adds attribute getter, setters and also a useful
 <code>fill</code> method that can be used with $fillable and $guarded
 properties to make sure that only the correct attributes
-will be set.</p>            <p>It is supossed to be used in model classes in general</p>        </div>
+will be set.</p>            <p>It is supposed to be used in model classes in general</p>                    </div>
     
     
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_attributes">
+                                        protected                                        array
+                </td>
+                <td>$attributes</td>
+                <td class="last">The model's attributes.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_original">
+                                        protected                                        array
+                </td>
+                <td>$original</td>
+                <td class="last">The model attribute's original state.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fillable">
+                                        protected                                        array
+                </td>
+                <td>$fillable</td>
+                <td class="last">Once you put at least one string in this array, only
+the attributes specified here will be changed
+with the setAttributes method.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_guarded">
+                                        protected                                        array
+                </td>
+                <td>$guarded</td>
+                <td class="last">The attributes that are not mass assignable. The opposite
+to the fillable array;.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_mutable">
+                                                                                bool
+                </td>
+                <td>$mutable</td>
+                <td class="last">Check if model should mutate attributes checking
+the existence of a specific method on model
+class. Default is true.</td>
+                <td></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    mixed
+                    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getAttribute">getAttribute</a>(
-    <abbr title="Mongolid\Model\string">string</abbr> $key)
+                    <a href="#method_getAttribute">getAttribute</a>(string $key)
+        
                                             <p>Get an attribute from the model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    mixed
+                    mixed
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getAttributes">getAttributes</a>()
+        
                                             <p>Get all attributes from the model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fill">fill</a>(
-    array $input)
-                                            <p>Set the model attributes using an array</p>                </div>
+                    <a href="#method_fill">fill</a>(array $input, bool $force = false)
+        
+                                            <p>Set the model attributes using an array.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_cleanAttribute">cleanAttribute</a>(
-    <abbr title="Mongolid\Model\string">string</abbr> $key)
+                    <a href="#method_cleanAttribute">cleanAttribute</a>(string $key)
+        
                                             <p>Set a given attribute on the model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setAttribute">setAttribute</a>(
-    <abbr title="Mongolid\Model\string">string</abbr> $key, 
-    mixed $value)
+                    <a href="#method_setAttribute">setAttribute</a>(string $key, mixed $value)
+        
                                             <p>Set a given attribute on the model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_syncOriginalAttributes">syncOriginalAttributes</a>()
+        
+                                            <p>Stores original attributes from actual data from attributes
+to be used in future comparisons about changes.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasMutatorMethod">hasMutatorMethod</a>(mixed $key, mixed $prefix)
+        
+                                            <p>Verify if model has a mutator method defined.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_buildMutatorMethod">buildMutatorMethod</a>(mixed $key, mixed $prefix)
+        
+                                            <p>Create mutator method pattern.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_toArray">toArray</a>()
+        
                                             <p>Returns the model instance as an Array.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    mixed
+                    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___get">__get</a>(
-    mixed $key)
+                    <a href="#method___get">__get</a>(mixed $key)
+        
                                             <p>Dynamically retrieve attributes on the model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___set">__set</a>(
-    mixed $key, 
-    mixed $value)
+                    <a href="#method___set">__set</a>(mixed $key, mixed $value)
+        
                                             <p>Dynamically set attributes on the model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    boolean
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___isset">__isset</a>(
-    mixed $key)
+                    <a href="#method___isset">__isset</a>(mixed $key)
+        
                                             <p>Determine if an attribute exists on the model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___unset">__unset</a>(
-    mixed $key)
+                    <a href="#method___unset">__unset</a>(mixed $key)
+        
                                             <p>Unset an attribute on the model.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -209,24 +286,25 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getAttribute">
-        <div class="location">at line         line 52</div>
-        <code>                    
-    mixed
-    <strong>getAttribute</strong>(
-    <abbr title="Mongolid\Model\string">string</abbr> $key)</code>
+        <div class="location">at         line 62</div>
+        <code>                    mixed
+    <strong>getAttribute</strong>(string $key)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Get an attribute from the model.</p>                                </div>
+                                    <p>Get an attribute from the model.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="Mongolid\Model\string">string</abbr></td>
+                <td>string</td>
                 <td>$key</td>
-                <td>The attribute to be accessed.</td>
+                <td>the attribute to be accessed</td>
             </tr>
             </table>
 
@@ -235,8 +313,7 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
@@ -249,22 +326,24 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
             </div>
                     <div class="method-item">
                     <h3 id="method_getAttributes">
-        <div class="location">at line         line 68</div>
-        <code>                    
-    mixed
-    <strong>getAttributes</strong>()</code>
+        <div class="location">at         line 78</div>
+        <code>                    mixed
+    <strong>getAttributes</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Get all attributes from the model.</p>                                </div>
+                                    <p>Get all attributes from the model.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
@@ -277,38 +356,34 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
             </div>
                     <div class="method-item">
                     <h3 id="method_fill">
-        <div class="location">at line         line 80</div>
+        <div class="location">at         line 89</div>
         <code>                    
-    void
-    <strong>fill</strong>(
-    array $input)</code>
+    <strong>fill</strong>(array $input, bool $force = false)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Set the model attributes using an array</p>                                </div>
+                                    <p>Set the model attributes using an array.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    array</td>
+                <td>array</td>
                 <td>$input</td>
-                <td>The data that will be used to fill the attributes.</td>
+                <td>the data that will be used to fill the attributes</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td>force fill</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -317,24 +392,120 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
             </div>
                     <div class="method-item">
                     <h3 id="method_cleanAttribute">
-        <div class="location">at line         line 96</div>
+        <div class="location">at         line 108</div>
         <code>                    
-    void
-    <strong>cleanAttribute</strong>(
-    <abbr title="Mongolid\Model\string">string</abbr> $key)</code>
+    <strong>cleanAttribute</strong>(string $key)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Set a given attribute on the model.</p>                                </div>
+                                    <p>Set a given attribute on the model.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="Mongolid\Model\string">string</abbr></td>
+                <td>string</td>
                 <td>$key</td>
-                <td>Name of the attribute to be unset.</td>
+                <td>name of the attribute to be unset</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setAttribute">
+        <div class="location">at         line 119</div>
+        <code>                    
+    <strong>setAttribute</strong>(string $key, mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set a given attribute on the model.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td>name of the attribute to be set</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>value to be set</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_syncOriginalAttributes">
+        <div class="location">at         line 131</div>
+        <code>                    
+    <strong>syncOriginalAttributes</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Stores original attributes from actual data from attributes
+to be used in future comparisons about changes.</p>                    <p>Ideally should be called once right after retrieving data from
+the database.</p>                            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasMutatorMethod">
+        <div class="location">at         line 144</div>
+        <code>            protected        bool
+    <strong>hasMutatorMethod</strong>(mixed $key, mixed $prefix)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Verify if model has a mutator method defined.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$key</td>
+                <td>attribute name</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$prefix</td>
+                <td>method prefix to be used</td>
             </tr>
             </table>
 
@@ -343,8 +514,7 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    void</td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
@@ -356,32 +526,31 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setAttribute">
-        <div class="location">at line         line 109</div>
-        <code>                    
-    void
-    <strong>setAttribute</strong>(
-    <abbr title="Mongolid\Model\string">string</abbr> $key, 
-    mixed $value)</code>
+                    <h3 id="method_buildMutatorMethod">
+        <div class="location">at         line 159</div>
+        <code>            protected        string
+    <strong>buildMutatorMethod</strong>(mixed $key, mixed $prefix)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Set a given attribute on the model.</p>                                </div>
+                                    <p>Create mutator method pattern.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="Mongolid\Model\string">string</abbr></td>
+                <td>mixed</td>
                 <td>$key</td>
-                <td>Name of the atribute to be set.</td>
+                <td>attribute name</td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
-                <td>$value</td>
-                <td>Value to be set.</td>
+                <td>mixed</td>
+                <td>$prefix</td>
+                <td>method prefix to be used</td>
             </tr>
             </table>
 
@@ -390,8 +559,7 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    void</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -404,22 +572,24 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at line         line 119</div>
-        <code>                    
-    array
-    <strong>toArray</strong>()</code>
+        <div class="location">at         line 169</div>
+        <code>                    array
+    <strong>toArray</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Returns the model instance as an Array.</p>                                </div>
+                                    <p>Returns the model instance as an Array.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    array</td>
+            <td>array</td>
             <td></td>
         </tr>
     </table>
@@ -432,24 +602,25 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
             </div>
                     <div class="method-item">
                     <h3 id="method___get">
-        <div class="location">at line         line 131</div>
-        <code>                    
-    mixed
-    <strong>__get</strong>(
-    mixed $key)</code>
+        <div class="location">at         line 181</div>
+        <code>                    mixed
+    <strong>__get</strong>(mixed $key)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Dynamically retrieve attributes on the model.</p>                                </div>
+                                    <p>Dynamically retrieve attributes on the model.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$key</td>
-                <td>Name of the attribute.</td>
+                <td>name of the attribute</td>
             </tr>
             </table>
 
@@ -458,8 +629,7 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
@@ -472,45 +642,34 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
             </div>
                     <div class="method-item">
                     <h3 id="method___set">
-        <div class="location">at line         line 143</div>
+        <div class="location">at         line 196</div>
         <code>                    
-    void
-    <strong>__set</strong>(
-    mixed $key, 
-    mixed $value)</code>
+    <strong>__set</strong>(mixed $key, mixed $value)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Dynamically set attributes on the model.</p>                                </div>
+                                    <p>Dynamically set attributes on the model.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$key</td>
-                <td>Attribute name.</td>
+                <td>attribute name</td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$value</td>
-                <td>Value to be set.</td>
+                <td>value to be set</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -519,24 +678,25 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
             </div>
                     <div class="method-item">
                     <h3 id="method___isset">
-        <div class="location">at line         line 156</div>
-        <code>                    
-    boolean
-    <strong>__isset</strong>(
-    mixed $key)</code>
+        <div class="location">at         line 212</div>
+        <code>                    bool
+    <strong>__isset</strong>(mixed $key)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Determine if an attribute exists on the model.</p>                                </div>
+                                    <p>Determine if an attribute exists on the model.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$key</td>
-                <td>Attribute name.</td>
+                <td>attribute name</td>
             </tr>
             </table>
 
@@ -545,8 +705,7 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    boolean</td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
@@ -559,38 +718,29 @@ will be set.</p>            <p>It is supossed to be used in model classes in gen
             </div>
                     <div class="method-item">
                     <h3 id="method___unset">
-        <div class="location">at line         line 167</div>
+        <div class="location">at         line 222</div>
         <code>                    
-    void
-    <strong>__unset</strong>(
-    mixed $key)</code>
+    <strong>__unset</strong>(mixed $key)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Unset an attribute on the model.</p>                                </div>
+                                    <p>Unset an attribute on the model.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$key</td>
-                <td>Attribute name.</td>
+                <td>attribute name</td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>

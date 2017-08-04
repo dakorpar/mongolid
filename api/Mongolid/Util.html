@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,9 +66,7 @@
                 <div class="namespace-breadcrumbs">
         <ol class="breadcrumb">
             <li><span class="label label-default">Namespace</span></li>
-                                                        <li><a href="../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../Mongolid/Util.html">Util</a></li>
-    
+                    <li><a href="../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../Mongolid/Util.html">Util</a></li><li class="backslash">\</li>
         </ol>
     </div>
             <div id="page-content">
@@ -80,8 +81,39 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
+                                            <a href="../Mongolid/Util/CacheComponent.html"><abbr title="Mongolid\Util\CacheComponent">CacheComponent</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    CacheComponent will cache values for later use based in "key, value"
+approach.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Mongolid/Util/LocalDateTime.html"><abbr title="Mongolid\Util\LocalDateTime">LocalDateTime</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    This class is responsible for converting UTCDateTime from MongoDB driver in
+local date time.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Mongolid/Util/ObjectIdUtils.html"><abbr title="Mongolid\Util\ObjectIdUtils">ObjectIdUtils</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    An utility class (aka helper class) related to MongoDB's ObjectId. An
+"structure" that has only static methods and encapsulates no state.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <a href="../Mongolid/Util/SequenceService.html"><abbr title="Mongolid\Util\SequenceService">SequenceService</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Sequence service will manage and provide auto-increment sequences to be used
 by the models. It can be useful for objects which the _id must be an integer
@@ -90,6 +122,20 @@ sequence.
             </div>
             </div>
     
+            <h2>Interfaces</h2>
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Mongolid/Util/CacheComponentInterface.html"><abbr title="Mongolid\Util\CacheComponentInterface">CacheComponentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    CacheComponentInteface describes the API of an CacheComponent that may be
+used with Mongolid.
+                </div>
+            </div>
+            </div>
     
     
             </div>

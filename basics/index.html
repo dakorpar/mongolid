@@ -7,19 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
-  <title>Basics - Mongolid ODM</title>
-  
-
   <link rel="shortcut icon" href="../img/favicon.ico">
-
-  
+  <title>Basics - Mongolid ODM</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
-
   
   <script>
     // Current page data
@@ -30,9 +24,7 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script> 
-
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
   
 </head>
 
@@ -52,83 +44,73 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
+	<ul class="current">
+	  
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="..">Home</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Basics</a>
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Basics</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#installation">Installation</a></li>
+    
+        <ul>
         
-            <ul>
-            
-                <li class="toctree-l3"><a href="#installation">Installation</a></li>
-                
-                    <li><a class="toctree-l4" href="#requirements">Requirements</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#setup">Setup</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#basic-usage">Basic Usage</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#monglid-cursor">Monglid Cursor</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#insert-update-delete">Insert, Update, Delete</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#mass-assignment">Mass Assignment</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#converting-to-arrays-json">Converting To Arrays / JSON</a></li>
-                
-            
-            </ul>
+            <li><a class="toctree-l3" href="#requirements">Requirements</a></li>
         
-    </li>
-<li>
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#setup">Setup</a></li>
+    
+
+    <li class="toctree-l2"><a href="#basic-usage">Basic Usage</a></li>
+    
+
+    <li class="toctree-l2"><a href="#monglid-cursor">Monglid Cursor</a></li>
+    
+
+    <li class="toctree-l2"><a href="#insert-update-delete">Insert, Update, Delete</a></li>
+    
+
+    <li class="toctree-l2"><a href="#mass-assignment">Mass Assignment</a></li>
+    
+
+    <li class="toctree-l2"><a href="#converting-to-arrays-json">Converting To Arrays / JSON</a></li>
+    
+
+    </ul>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../relationships/">Relationships</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../relationships/">Relationships</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../datamapper/">DataMapper Pattern</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../datamapper/">DataMapper Pattern</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../api-docs/">API Documentation</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../api-docs/">API Documentation</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../troubleshooting/">Troubleshooting</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../info/">Additional information</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../info/">Additional information</a>
+	    </li>
           
         </ul>
       </div>
@@ -155,9 +137,8 @@
     <li>Basics</li>
     <li class="wy-breadcrumbs-aside">
       
-        
-          <a href="https://github.com/leroy-merlin-br/mongolid" class="icon icon-github"> Edit on GitHub</a>
-        
+        <a href="https://github.com/leroy-merlin-br/mongolid/edit/master/docs/basics.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
     </li>
   </ul>
@@ -176,6 +157,9 @@
 <li>PHP<strong>7</strong></li>
 <li><a href="http://php.net/manual/en/set.mongodb.php">MongoDB Driver</a></li>
 </ul>
+<blockquote>
+<p><strong>Note:</strong> If you are looking for the old PHP 5.x version, head to the <a href="https://github.com/leroy-merlin-br/mongolid/tree/v0.8-dev">v0.8 branch</a>.</p>
+</blockquote>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <p>If you are not using Laravel, you should initialize the Mongolid connection pool and container manually.
 The minimalistic way of doing it is to use <code>Mongolid\Manager</code>:</p>
@@ -387,13 +371,13 @@ $manager = new Manager(new Connection('mongodb://localhost:27017'));
       </div>
 
     </section>
-
+    
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/leroy-merlin-br/mongolid" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/leroy-merlin-br/mongolid" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
@@ -403,6 +387,7 @@ $manager = new Manager(new Connection('mongodb://localhost:27017'));
       
     </span>
 </div>
+    <script src="../js/theme.js"></script>
 
 </body>
 </html>

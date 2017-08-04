@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,28 +66,31 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../../Mongolid/DataMapper.html">DataMapper</a></li>
-    
-                <li>SchemaMapper</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/DataMapper.html">DataMapper</a></li><li class="backslash">\</li><li>SchemaMapper</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>SchemaMapper</h1>
+        <h1>
+            SchemaMapper
+                
+        </h1>
     </div>
 
     <p>    class
     <strong>SchemaMapper</strong>
 </p>
 
+        
+    
+
             <div class="description">
-            <p>The SchemaMapper will map an object or an array of data to an Schema object.</p>            <p>When instantiating a SchemaMapper you should provide a Schema. When calling
+            <p>The SchemaMapper will map an object or an array of data to a Schema object.</p>            <p>When instantiating a SchemaMapper you should provide a Schema. When calling
 'map' the Schema provided will be used to format the data to the correct
 format.</p>
 
-<p>This class is meant to do the oposite of the EntityAssembler</p>        </div>
+<p>This class is meant to do the opposite of the EntityAssembler</p>                    </div>
     
     
     
@@ -93,11 +99,18 @@ format.</p>
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_schema">
-                                                                                
-    <a href="../../Mongolid/Schema.html"><abbr title="Mongolid\Schema">Schema</abbr></a>
+                                                                                <a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a>
                 </td>
                 <td>$schema</td>
-                <td class="last">The actual schema to maps the data</td>
+                <td class="last">The actual schema to maps the data.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_castableTypes">
+                                        protected                                        string[]
+                </td>
+                <td>$castableTypes</td>
+                <td class="last">Types that can be casted.</td>
                 <td></td>
             </tr>
             </table>
@@ -109,36 +122,73 @@ format.</p>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(
-    <a href="../../Mongolid/Schema.html"><abbr title="Mongolid\Schema">Schema</abbr></a> $schema)
+                    <a href="#method___construct">__construct</a>(<a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a> $schema)
+        
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    array
+                    array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_map">map</a>(
-    array|object $data)
-                                            <p>Maps the input $data to the schema specified in the $schema property</p>                </div>
+                    <a href="#method_map">map</a>(array|object $data)
+        
+                                            <p>Maps the input $data to the schema specified in the $schema property.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_parseField">parseField</a>(
-    mixed $value, 
-    <abbr title="Mongolid\DataMapper\string">string</abbr> $fieldType)
-                                            <p>Parse a value based on a field yype of the schema</p>                </div>
+                    <a href="#method_clearDynamic">clearDynamic</a>(array $data)
+        
+                                            <p>If the schema is not dynamic, remove all non specified fields.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_parseField">parseField</a>(mixed $value, string $fieldType)
+        
+                                            <p>Parse a value based on a field yype of the schema.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_cast">cast</a>(mixed $value, string $type)
+        
+                                            <p>Uses PHP's settype to cast a value to a type.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_mapToSchema">mapToSchema</a>(mixed $value, string $schemaClass)
+        
+                                            <p>Instantiate another SchemaMapper with the given $schemaClass and maps
+the given $value.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_parseToArray">parseToArray</a>(mixed $object)
+        
+                                            <p>Parses an object to an array before sending it to the SchemaMapper.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -149,22 +199,23 @@ format.</p>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line         line 35</div>
+        <div class="location">at         line 37</div>
         <code>                    
-    
-    <strong>__construct</strong>(
-    <a href="../../Mongolid/Schema.html"><abbr title="Mongolid\Schema">Schema</abbr></a> $schema)</code>
+    <strong>__construct</strong>(<a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a> $schema)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <a href="../../Mongolid/Schema.html"><abbr title="Mongolid\Schema">Schema</abbr></a></td>
+                <td><a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a></td>
                 <td>$schema</td>
-                <td>Schema that will be used to map each field.</td>
+                <td>schema that will be used to map each field</td>
             </tr>
             </table>
 
@@ -177,24 +228,26 @@ format.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_map">
-        <div class="location">at line         line 47</div>
-        <code>                    
-    array
-    <strong>map</strong>(
-    array|object $data)</code>
+        <div class="location">at         line 50</div>
+        <code>                    array
+    <strong>map</strong>(array|object $data)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Maps the input $data to the schema specified in the $schema property</p>                                </div>
+                                    <p>Maps the input $data to the schema specified in the $schema property.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    array|object</td>
+                <td>array|object</td>
                 <td>$data</td>
-                <td>Array or object with the fields that should be mapped to $this->schema specifications.</td>
+                <td>array or object with the fields that should
+                          be mapped to $this->schema specifications</td>
             </tr>
             </table>
 
@@ -203,8 +256,7 @@ format.</p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    array</td>
+            <td>array</td>
             <td></td>
         </tr>
     </table>
@@ -216,32 +268,62 @@ format.</p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_parseField">
-        <div class="location">at line         line 82</div>
-        <code>                    
-    mixed
-    <strong>parseField</strong>(
-    mixed $value, 
-    <abbr title="Mongolid\DataMapper\string">string</abbr> $fieldType)</code>
+                    <h3 id="method_clearDynamic">
+        <div class="location">at         line 68</div>
+        <code>            protected        
+    <strong>clearDynamic</strong>(array $data)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Parse a value based on a field yype of the schema</p>                                </div>
+                                    <p>If the schema is not dynamic, remove all non specified fields.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
+                <td>array</td>
+                <td>$data</td>
+                <td>Reference of the fields. The passed array will be modified.</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseField">
+        <div class="location">at         line 83</div>
+        <code>                    mixed
+    <strong>parseField</strong>(mixed $value, string $fieldType)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Parse a value based on a field yype of the schema.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
                 <td>$value</td>
-                <td>Value to be parsed.</td>
+                <td>value to be parsed</td>
             </tr>
                     <tr>
-                <td>
-    <abbr title="Mongolid\DataMapper\string">string</abbr></td>
+                <td>string</td>
                 <td>$fieldType</td>
-                <td>Description of how the field should be treated.</td>
+                <td>description of how the field should be treated</td>
             </tr>
             </table>
 
@@ -250,9 +332,148 @@ format.</p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td>$value Value parsed to match $type</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_cast">
+        <div class="location">at         line 118</div>
+        <code>            protected        mixed
+    <strong>cast</strong>(mixed $value, string $type)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Uses PHP's settype to cast a value to a type.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>value to be casted</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td>type to which the $value should be casted to</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>http://php.net/manual/pt_BR/function.settype.php</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mapToSchema">
+        <div class="location">at         line 134</div>
+        <code>            protected        mixed
+    <strong>mapToSchema</strong>(mixed $value, string $schemaClass)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Instantiate another SchemaMapper with the given $schemaClass and maps
+the given $value.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>value that will be mapped</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$schemaClass</td>
+                <td>class that will be passed to the new SchemaMapper constructor</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseToArray">
+        <div class="location">at         line 158</div>
+        <code>            protected        array
+    <strong>parseToArray</strong>(mixed $object)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Parses an object to an array before sending it to the SchemaMapper.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$object</td>
+                <td>the object that will be transformed into an array</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
         </tr>
     </table>
 

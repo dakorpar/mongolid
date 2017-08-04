@@ -23,7 +23,10 @@
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html" method="GET">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -63,26 +66,30 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../Mongolid.html">Mongolid</a></li>
-                                        <li><a href="../../Mongolid/DataMapper.html">DataMapper</a></li>
-    
-                <li>DataMapper</li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/DataMapper.html">DataMapper</a></li><li class="backslash">\</li><li>DataMapper</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>DataMapper</h1>
+        <h1>
+            DataMapper
+                
+        </h1>
     </div>
 
     <p>    class
-    <strong>DataMapper</strong>
+    <strong>DataMapper</strong>        implements
+        <a href="../../Mongolid/Schema/HasSchemaInterface.html"><abbr title="Mongolid\Schema\HasSchemaInterface">HasSchemaInterface</abbr></a>
 </p>
+
+        
+    
 
             <div class="description">
             <p>The DataMapper class will abstract how an Entity is persisted and retrieved
-from the database.</p>            <p>The DataMapper will always use a Schema trought the SchemaMapper to parse the
-document in and out of the database.</p>        </div>
+from the database.</p>            <p>The DataMapper will always use a Schema trough the SchemaMapper to parse the
+document in and out of the database.</p>                    </div>
     
     
     
@@ -91,20 +98,42 @@ document in and out of the database.</p>        </div>
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_schemaClass">
-                                                                                
-    string
+                                                                                string
                 </td>
                 <td>$schemaClass</td>
-                <td class="last">Name of the schema class to be used</td>
+                <td class="last">Name of the schema class to be used.</td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_schema">
-                                                                                
-    <a href="../../Mongolid/Schema.html"><abbr title="Mongolid\Schema">Schema</abbr></a>
+                                        protected                                        <a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a>
                 </td>
                 <td>$schema</td>
-                <td class="last">Schema object. Will be set after the $schemaClass</td>
+                <td class="last">Schema object. Will be set after the $schemaClass.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_connPool">
+                                        protected                                        <a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a>
+                </td>
+                <td>$connPool</td>
+                <td class="last">Connections that are going to be used to interact with the database.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_assembler">
+                                        protected                                        <a href="../../Mongolid/DataMapper/EntityAssembler.html"><abbr title="Mongolid\DataMapper\EntityAssembler">EntityAssembler</abbr></a>
+                </td>
+                <td>$assembler</td>
+                <td class="last">Have the responsibility of assembling the data coming from the database into actual entities.</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_eventService">
+                                        protected                                        <a href="../../Mongolid/Event/EventTriggerService.html"><abbr title="Mongolid\Event\EventTriggerService">EventTriggerService</abbr></a>
+                </td>
+                <td>$eventService</td>
+                <td class="last">In order to dispatch events when necessary.</td>
                 <td></td>
             </tr>
             </table>
@@ -116,35 +145,32 @@ document in and out of the database.</p>        </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(
-    <a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a> $connPool)
+                    <a href="#method___construct">__construct</a>(<a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a> $connPool)
+        
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    boolean
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_save">save</a>(
-    mixed $object)
+                    <a href="#method_save">save</a>(mixed $entity, array $options = [])
+        
                                             <p>Upserts the given object into database. Returns success if write concern
 is acknowledged.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    boolean
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_insert">insert</a>(
-    mixed $object)
+                    <a href="#method_insert">insert</a>(mixed $entity, array $options = [], bool $fireEvents = true)
+        
                                             <p>Inserts the given object into database. Returns success if write concern
 is acknowledged. Since it's an insert, it will fail if the _id already
 exists.</p>                </div>
@@ -152,61 +178,169 @@ exists.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    boolean
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_update">update</a>(
-    mixed $object)
+                    <a href="#method_update">update</a>(mixed $entity, array $options = [])
+        
                                             <p>Updates the given object into database. Returns success if write concern
 is acknowledged. Since it's an update, it will fail if the document with
-the given _id didn't exists.</p>                </div>
+the given _id did not exists.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    boolean
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_delete">delete</a>(
-    mixed $object)
+                    <a href="#method_delete">delete</a>(mixed $entity, array $options = [])
+        
                                             <p>Removes the given document from the collection.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
+                    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_where">where</a>(
-    mixed $query = array())
+                    <a href="#method_where">where</a>(mixed $query = [], array $projection = [], bool $cacheable = false)
+        
                                             <p>Retrieve a database cursor that will return $this->schema->entityClass
-objects that upon iteration</p>                </div>
+objects that upon iteration.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
+                    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_all">all</a>()
+        
                                             <p>Retrieve a database cursor that will return all documents as
-$this->schema->entityClass objects upon iteration</p>                </div>
+$this->schema->entityClass objects upon iteration.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_first">first</a>(mixed $query = [], array $projection = [], bool $cacheable = false)
+        
+                                            <p>Retrieve one $this->schema->entityClass objects that matches the given
+query.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_firstOrFail">firstOrFail</a>(mixed $query = [], array $projection = [], bool $cacheable = false)
+        
+                                            <p>Retrieve one $this->schema->entityClass objects that matches the given
+query. If no document was found, throws ModelNotFoundException.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_parseToDocument">parseToDocument</a>(mixed $entity)
+        
+                                            <p>Parses an object with SchemaMapper and the given Schema.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Mongolid/DataMapper/SchemaMapper.html"><abbr title="Mongolid\DataMapper\SchemaMapper">SchemaMapper</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSchemaMapper">getSchemaMapper</a>()
+        
+                                            <p>Returns a SchemaMapper with the $schema or $schemaClass instance.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="MongoDB\Collection">Collection</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCollection">getCollection</a>()
+        
+                                            <p>Retrieves the Collection object.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_prepareValueQuery">prepareValueQuery</a>(mixed $value)
+        
+                                            <p>Transforms a value that is not an array into an MongoDB query (array).</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_prepareArrayFieldOfQuery">prepareArrayFieldOfQuery</a>(array $value)
+        
+                                            <p>Prepares an embedded array of an query. It will convert string ObjectIDs
+in operators into actual objects.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Mongolid/DataMapper/EntityAssembler.html"><abbr title="Mongolid\DataMapper\EntityAssembler">EntityAssembler</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAssembler">getAssembler</a>()
+        
+                                            <p>Retrieves an EntityAssembler instance.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fireEvent">fireEvent</a>(string $event, mixed $entity, bool $halt = false)
+        
+                                            <p>Triggers an event. May return if that event had success.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_prepareProjection">prepareProjection</a>(array $fields)
+        
+                                            <p>Converts the given projection fields to Mongo driver format.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSchema">getSchema</a>()
+        
+                                            <p>Returns a Schema object that describes an Entity in MongoDB.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_first">first</a>(
-    mixed $query = array())
-                                            <p>Retrieve one $this->schema->entityClass objects that matches the given
-query</p>                </div>
+                    <a href="#method_setSchema">setSchema</a>(<a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a> $schema)
+        
+                                            <p>Set a Schema object  that describes an Entity in MongoDB.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -217,22 +351,23 @@ query</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line         line 51</div>
+        <div class="location">at         line 65</div>
         <code>                    
-    
-    <strong>__construct</strong>(
-    <a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a> $connPool)</code>
+    <strong>__construct</strong>(<a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a> $connPool)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a></td>
+                <td><a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a></td>
                 <td>$connPool</td>
-                <td>The connections that are going to be used to interact with the database.</td>
+                <td>the connections that are going to be used to interact with the database</td>
             </tr>
             </table>
 
@@ -245,25 +380,31 @@ query</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_save">
-        <div class="location">at line         line 64</div>
-        <code>                    
-    boolean
-    <strong>save</strong>(
-    mixed $object)</code>
+        <div class="location">at         line 81</div>
+        <code>                    bool
+    <strong>save</strong>(mixed $entity, array $options = [])
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Upserts the given object into database. Returns success if write concern
-is acknowledged.</p>                                </div>
+is acknowledged.</p>                    <p>Notice: Saves with Unacknowledged WriteConcern will not fire <code>saved</code> event.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
-                <td>$object</td>
-                <td>The object used in the operation.</td>
+                <td>mixed</td>
+                <td>$entity</td>
+                <td>the entity used in the operation</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td>possible options to send to mongo driver</td>
             </tr>
             </table>
 
@@ -272,8 +413,7 @@ is acknowledged.</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    boolean</td>
+            <td>bool</td>
             <td>Success (but always false if write concern is Unacknowledged)</td>
         </tr>
     </table>
@@ -286,26 +426,37 @@ is acknowledged.</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_insert">
-        <div class="location">at line         line 99</div>
-        <code>                    
-    boolean
-    <strong>insert</strong>(
-    mixed $object)</code>
+        <div class="location">at         line 123</div>
+        <code>                    bool
+    <strong>insert</strong>(mixed $entity, array $options = [], bool $fireEvents = true)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Inserts the given object into database. Returns success if write concern
 is acknowledged. Since it's an insert, it will fail if the _id already
-exists.</p>                                </div>
+exists.</p>                    <p>Notice: Inserts with Unacknowledged WriteConcern will not fire <code>inserted</code> event.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
-                <td>$object</td>
-                <td>The object used in the operation.</td>
+                <td>mixed</td>
+                <td>$entity</td>
+                <td>the entity used in the operation</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td>possible options to send to mongo driver</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$fireEvents</td>
+                <td>whether events should be fired</td>
             </tr>
             </table>
 
@@ -314,8 +465,7 @@ exists.</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    boolean</td>
+            <td>bool</td>
             <td>Success (but always false if write concern is Unacknowledged)</td>
         </tr>
     </table>
@@ -328,26 +478,32 @@ exists.</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_update">
-        <div class="location">at line         line 129</div>
-        <code>                    
-    boolean
-    <strong>update</strong>(
-    mixed $object)</code>
+        <div class="location">at         line 161</div>
+        <code>                    bool
+    <strong>update</strong>(mixed $entity, array $options = [])
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Updates the given object into database. Returns success if write concern
 is acknowledged. Since it's an update, it will fail if the document with
-the given _id didn't exists.</p>                                </div>
+the given _id did not exists.</p>                    <p>Notice: Updates with Unacknowledged WriteConcern will not fire <code>updated</code> event.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
-                <td>$object</td>
-                <td>The object used in the operation.</td>
+                <td>mixed</td>
+                <td>$entity</td>
+                <td>the entity used in the operation</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td>possible options to send to mongo driver</td>
             </tr>
             </table>
 
@@ -356,8 +512,7 @@ the given _id didn't exists.</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    boolean</td>
+            <td>bool</td>
             <td>Success (but always false if write concern is Unacknowledged)</td>
         </tr>
     </table>
@@ -370,24 +525,30 @@ the given _id didn't exists.</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location">at line         line 158</div>
-        <code>                    
-    boolean
-    <strong>delete</strong>(
-    mixed $object)</code>
+        <div class="location">at         line 206</div>
+        <code>                    bool
+    <strong>delete</strong>(mixed $entity, array $options = [])
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Removes the given document from the collection.</p>                                </div>
+                                    <p>Removes the given document from the collection.</p>                    <p>Notice: Deletes with Unacknowledged WriteConcern will not fire <code>deleted</code> event.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
-                <td>$object</td>
-                <td>The object used in the operation.</td>
+                <td>mixed</td>
+                <td>$entity</td>
+                <td>the entity used in the operation</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td>possible options to send to mongo driver</td>
             </tr>
             </table>
 
@@ -396,8 +557,7 @@ the given _id didn't exists.</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    boolean</td>
+            <td>bool</td>
             <td>Success (but always false if write concern is Unacknowledged)</td>
         </tr>
     </table>
@@ -410,25 +570,36 @@ the given _id didn't exists.</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_where">
-        <div class="location">at line         line 187</div>
-        <code>                    
-    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
-    <strong>where</strong>(
-    mixed $query = array())</code>
+        <div class="location">at         line 240</div>
+        <code>                    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
+    <strong>where</strong>(mixed $query = [], array $projection = [], bool $cacheable = false)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Retrieve a database cursor that will return $this->schema->entityClass
-objects that upon iteration</p>                                </div>
+objects that upon iteration.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$query</td>
-                <td>MongoDB query to retrieve documents.</td>
+                <td>mongoDB query to retrieve documents</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$projection</td>
+                <td>fields to project in Mongo query</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$cacheable</td>
+                <td>retrieves a CacheableCursor instead</td>
             </tr>
             </table>
 
@@ -437,8 +608,7 @@ objects that upon iteration</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></td>
+            <td><a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -451,23 +621,25 @@ objects that upon iteration</p>                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_all">
-        <div class="location">at line         line 205</div>
-        <code>                    
-    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
-    <strong>all</strong>()</code>
+        <div class="location">at         line 266</div>
+        <code>                    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a>
+    <strong>all</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Retrieve a database cursor that will return all documents as
-$this->schema->entityClass objects upon iteration</p>                                </div>
+$this->schema->entityClass objects upon iteration.</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></td>
+            <td><a href="../../Mongolid/Cursor/Cursor.html"><abbr title="Mongolid\Cursor\Cursor">Cursor</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -480,25 +652,36 @@ $this->schema->entityClass objects upon iteration</p>                           
             </div>
                     <div class="method-item">
                     <h3 id="method_first">
-        <div class="location">at line         line 218</div>
-        <code>                    
-    mixed
-    <strong>first</strong>(
-    mixed $query = array())</code>
+        <div class="location">at         line 281</div>
+        <code>                    mixed
+    <strong>first</strong>(mixed $query = [], array $projection = [], bool $cacheable = false)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Retrieve one $this->schema->entityClass objects that matches the given
-query</p>                                </div>
+query.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$query</td>
-                <td>MongoDB query to retrieve the document.</td>
+                <td>mongoDB query to retrieve the document</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$projection</td>
+                <td>fields to project in Mongo query</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$cacheable</td>
+                <td>retrieves the first through a CacheableCursor</td>
             </tr>
             </table>
 
@@ -507,12 +690,455 @@ query</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td>First document matching query as an $this->schema->entityClass object</td>
         </tr>
     </table>
 
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_firstOrFail">
+        <div class="location">at         line 316</div>
+        <code>                    mixed
+    <strong>firstOrFail</strong>(mixed $query = [], array $projection = [], bool $cacheable = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Retrieve one $this->schema->entityClass objects that matches the given
+query. If no document was found, throws ModelNotFoundException.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$query</td>
+                <td>mongoDB query to retrieve the document</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$projection</td>
+                <td>fields to project in Mongo query</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$cacheable</td>
+                <td>retrieves the first through a CacheableCursor</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>First document matching query as an $this->schema->entityClass object</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Mongolid/Exception/ModelNotFoundException.html"><abbr title="Mongolid\Exception\ModelNotFoundException">ModelNotFoundException</abbr></a></td>
+                <td>if no document was found</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseToDocument">
+        <div class="location">at         line 335</div>
+        <code>            protected        array
+    <strong>parseToDocument</strong>(mixed $entity)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Parses an object with SchemaMapper and the given Schema.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$entity</td>
+                <td>the object to be parsed</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>Document</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSchemaMapper">
+        <div class="location">at         line 354</div>
+        <code>            protected        <a href="../../Mongolid/DataMapper/SchemaMapper.html"><abbr title="Mongolid\DataMapper\SchemaMapper">SchemaMapper</abbr></a>
+    <strong>getSchemaMapper</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns a SchemaMapper with the $schema or $schemaClass instance.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Mongolid/DataMapper/SchemaMapper.html"><abbr title="Mongolid\DataMapper\SchemaMapper">SchemaMapper</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCollection">
+        <div class="location">at         line 368</div>
+        <code>            protected        <abbr title="MongoDB\Collection">Collection</abbr>
+    <strong>getCollection</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Retrieves the Collection object.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="MongoDB\Collection">Collection</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepareValueQuery">
+        <div class="location">at         line 386</div>
+        <code>            protected        array
+    <strong>prepareValueQuery</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Transforms a value that is not an array into an MongoDB query (array).</p>                    <p>This method will take care of converting a single value into a query for
+an _id, including when a objectId is passed as a string.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>the _id of the document</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>Query for the given _id</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepareArrayFieldOfQuery">
+        <div class="location">at         line 416</div>
+        <code>            protected        array
+    <strong>prepareArrayFieldOfQuery</strong>(array $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Prepares an embedded array of an query. It will convert string ObjectIDs
+in operators into actual objects.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$value</td>
+                <td>array that will be treated</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>prepared array</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAssembler">
+        <div class="location">at         line 438</div>
+        <code>            protected        <a href="../../Mongolid/DataMapper/EntityAssembler.html"><abbr title="Mongolid\DataMapper\EntityAssembler">EntityAssembler</abbr></a>
+    <strong>getAssembler</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Retrieves an EntityAssembler instance.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Mongolid/DataMapper/EntityAssembler.html"><abbr title="Mongolid\DataMapper\EntityAssembler">EntityAssembler</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fireEvent">
+        <div class="location">at         line 456</div>
+        <code>            protected        mixed
+    <strong>fireEvent</strong>(string $event, mixed $entity, bool $halt = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Triggers an event. May return if that event had success.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$event</td>
+                <td>identification of the event</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$entity</td>
+                <td>event payload</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$halt</td>
+                <td>true if the return of the event handler will be used in a conditional</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>event handler return</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepareProjection">
+        <div class="location">at         line 488</div>
+        <code>            protected        array
+    <strong>prepareProjection</strong>(array $fields)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Converts the given projection fields to Mongo driver format.</p>                    <p>How to use:
+    As Mongo projection using boolean values:
+        From: ['name' => true, '_id' => false]
+        To:   ['name' => true, '_id' => false]
+    As Mongo projection using integer values
+        From: ['name' => 1, '_id' => -1]
+        To:   ['name' => true, '_id' => false]
+    As an array of string:
+        From: ['name', '_id']
+        To:   ['name' => true, '_id' => true]
+    As an array of string to exclude some fields:
+        From: ['name', '-_id']
+        To:   ['name' => true, '_id' => false]</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$fields</td>
+                <td>fields to project</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>if the given $fields are not a valid projection</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSchema">
+        <div class="location">at         line 556</div>
+        <code>                    <a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a>
+    <strong>getSchema</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns a Schema object that describes an Entity in MongoDB.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setSchema">
+        <div class="location">at         line 566</div>
+        <code>                    
+    <strong>setSchema</strong>(<a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a> $schema)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set a Schema object  that describes an Entity in MongoDB.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Mongolid/Schema/Schema.html"><abbr title="Mongolid\Schema\Schema">Schema</abbr></a></td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
             
             
                     </div>

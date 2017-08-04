@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Mongolid\Event\EventTriggerInterface | Mongolid ODM Api</title>
+    <title>Mongolid\Exception\NoCollectionNameException | Mongolid ODM Api</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Mongolid_Event_EventTriggerInterface" data-root-path="../../">
+    <body id="class" data-name="class:Mongolid_Exception_NoCollectionNameException" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,108 +65,45 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">interface</span></li>
-                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Event.html">Event</a></li><li class="backslash">\</li><li>EventTriggerInterface</li>
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Exception.html">Exception</a></li><li class="backslash">\</li><li>NoCollectionNameException</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            EventTriggerInterface
+            NoCollectionNameException
                 
         </h1>
     </div>
 
-    <p>    interface
-    <strong>EventTriggerInterface</strong>
+    <p>    class
+    <strong>NoCollectionNameException</strong>        extends <a target="_blank" href="http://php.net/Exception">Exception</a>
 </p>
 
         
     
 
             <div class="description">
-            <p>An interface that should be implemented and injected in order to have events
-triggered from Mongolid.</p>                                </div>
+            <p>Class NoCollectionNameException.</p>                                </div>
     
     
     
-    
-            <h2>Methods</h2>
+            <h2>Properties</h2>
 
-            <div class="container-fluid underlined">
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_fire">fire</a>(string $event, mixed $payload, bool $halt)
-        
-                                            <p>Triggers / Dispatches a new event to the event handlers or listeners that
-are being used.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-            </div>
-
-
-        <h2>Details</h2>
-
-            <div id="method-details">
-                    <div class="method-item">
-                    <h3 id="method_fire">
-        <div class="location">at         line 23</div>
-        <code>                    mixed
-    <strong>fire</strong>(string $event, mixed $payload, bool $halt)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Triggers / Dispatches a new event to the event handlers or listeners that
-are being used.</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
+            <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$event</td>
-                <td>identification of the event</td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$payload</td>
-                <td>data that is going to be sent to the event handler</td>
-            </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$halt</td>
-                <td>The output of the event handler will be used in a conditional inside the context of
-                       where the event is being fired. This means that, if the event handler returns false,
-                       it will probably stop the action being executed, for example, "saving".</td>
+                <td class="type" id="property_message">
+                                        protected                                        string
+                </td>
+                <td>$message</td>
+                <td class="last">Exception message.</td>
+                <td></td>
             </tr>
             </table>
 
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td>Event handler return. The importance of this return is determined by $halt</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-            </div>
-
+    
     
             </div>
                 <div id="footer">

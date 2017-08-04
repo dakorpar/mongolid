@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Mongolid\Util\SequenceService | Mongolid ODM Api</title>
+    <title>Mongolid\Util\CacheComponentInterface | Mongolid ODM Api</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Mongolid_Util_SequenceService" data-root-path="../../">
+    <body id="class" data-name="class:Mongolid_Util_CacheComponentInterface" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,87 +65,66 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Util.html">Util</a></li><li class="backslash">\</li><li>SequenceService</li>
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../Mongolid.html">Mongolid</a></li><li class="backslash">\</li><li><a href="../../Mongolid/Util.html">Util</a></li><li class="backslash">\</li><li>CacheComponentInterface</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            SequenceService
+            CacheComponentInterface
                 
         </h1>
     </div>
 
-    <p>    class
-    <strong>SequenceService</strong>
+    <p>    interface
+    <strong>CacheComponentInterface</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Sequence service will manage and provide auto-increment sequences to be used
-by the models. It can be useful for objects which the _id must be an integer
-sequence.</p>                                </div>
+            <p>CacheComponentInteface describes the API of an CacheComponent that may be
+used with Mongolid.</p>                                </div>
     
     
     
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td class="type" id="property_collection">
-                                        protected                                        string
-                </td>
-                <td>$collection</td>
-                <td class="last">Sequences collection name on MongoDB. Default 'mongolid_sequences'.</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_connPool">
-                                        protected                                        <a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a>
-                </td>
-                <td>$connPool</td>
-                <td class="last">Connections that are going to be used to interact with the database.</td>
-                <td></td>
-            </tr>
-            </table>
-
     
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_get">get</a>(string $key)
+        
+                                            <p>Retrieve an item from the cache by key.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a> $connPool, string $collection = &#039;mongolid_sequences&#039;)
+                    <a href="#method_put">put</a>(string $key, mixed $value, float $minutes)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Store an item in the cache for a given number of minutes.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getNextValue">getNextValue</a>(string $sequenceName)
+                    <a href="#method_has">has</a>(string $key)
         
-                                            <p>Get next value for the sequence.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="MongoDB\Collection">Collection</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_rawCollection">rawCollection</a>()
-        
-                                            <p>Get the actual MongoDB Collection object.</p>                </div>
+                                            <p>Determine if an item exists in the cache. This method will also check
+if the ttl of the given cache key has been expired and will free the
+memory if so.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -155,44 +134,10 @@ sequence.</p>                                </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at         line 33</div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a> $connPool, string $collection = &#039;mongolid_sequences&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../Mongolid/Connection/Pool.html"><abbr title="Mongolid\Connection\Pool">Pool</abbr></a></td>
-                <td>$connPool</td>
-                <td>the connections that are going to be used to interact with the database</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$collection</td>
-                <td>the collection where the sequences will be stored</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getNextValue">
-        <div class="location">at         line 46</div>
-        <code>                    int
-    <strong>getNextValue</strong>(string $sequenceName)
+                    <h3 id="method_get">
+        <div class="location">at         line 18</div>
+        <code>                    mixed
+    <strong>get</strong>(string $key)
         </code>
     </h3>
     <div class="details">
@@ -200,15 +145,15 @@ sequence.</p>                                </div>
     
 
                     <div class="method-description">
-                                    <p>Get next value for the sequence.</p>                                                </div>
+                                    <p>Retrieve an item from the cache by key.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$sequenceName</td>
-                <td>sequence identifier string</td>
+                <td>$key</td>
+                <td>cache key of the item to be retrieved</td>
             </tr>
             </table>
 
@@ -217,7 +162,7 @@ sequence.</p>                                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
@@ -229,10 +174,10 @@ sequence.</p>                                </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_rawCollection">
-        <div class="location">at         line 66</div>
-        <code>            protected        <abbr title="MongoDB\Collection">Collection</abbr>
-    <strong>rawCollection</strong>()
+                    <h3 id="method_put">
+        <div class="location">at         line 27</div>
+        <code>                    
+    <strong>put</strong>(string $key, mixed $value, float $minutes)
         </code>
     </h3>
     <div class="details">
@@ -240,15 +185,68 @@ sequence.</p>                                </div>
     
 
                     <div class="method-description">
-                                    <p>Get the actual MongoDB Collection object.</p>                                                </div>
+                                    <p>Store an item in the cache for a given number of minutes.</p>                                                </div>
                 <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td>cache key of the item</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>value being stored in cache</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$minutes</td>
+                <td>cache ttl</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_has">
+        <div class="location">at         line 38</div>
+        <code>                    bool
+    <strong>has</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Determine if an item exists in the cache. This method will also check
+if the ttl of the given cache key has been expired and will free the
+memory if so.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td>cache key of the item</td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="MongoDB\Collection">Collection</abbr></td>
-            <td></td>
+            <td>bool</td>
+            <td>has cache key</td>
         </tr>
     </table>
 
